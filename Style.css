@@ -7,6 +7,12 @@
 
 body{
 background-color: rgb(246, 248, 251);
+color: black;
+}
+
+body.dark-mode{
+    background:#1e1e1e;
+    color:white;
 }
 
 .fullbody{
@@ -18,15 +24,20 @@ background-color: rgb(246, 248, 251);
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;  
-  margin-bottom: 30PX;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;  
+    margin-bottom: 30PX;
+}
+
+#live_clock{
+    position: relative;
+    left: 15px;
 }
 
 
-.light_dark_toggle {
+#light_dark_toggle {
     width: 48px;
     height: 48px;
 
