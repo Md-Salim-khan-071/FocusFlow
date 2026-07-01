@@ -1,3 +1,40 @@
+:root {
+
+    /* Backgrounds */
+    --bg-color: rgb(246, 248, 251);
+    --card-bg: white;
+
+    /* Text */
+    --primary-text: #1f2937;
+    --secondary-text: #6b7280;
+
+    /* Borders */
+    --border-color: #e5e7eb;
+
+    /* Shadows */
+    --card-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.06),
+        0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode {
+
+    /* Backgrounds */
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+
+    /* Text */
+    --primary-text: #f8fafc;
+    --secondary-text: #94a3b8;
+
+    /* Borders */
+    --border-color: #334155;
+
+    /* Shadows */
+    --card-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.35);
+
+}
 
 * {
     padding: 0;
@@ -6,13 +43,8 @@
 }
 
 body{
-background-color: rgb(246, 248, 251);
-color: black;
-}
-
-body.dark-mode{
-    background:#1e1e1e;
-    color:white;
+background-color: var(--bg-color);
+color: var(--primary-text);
 }
 
 .fullbody{
@@ -31,9 +63,21 @@ header {
     margin-bottom: 30PX;
 }
 
+.greet_heading p{
+    color: var(--secondary-text);
+}
+
 #live_clock{
     position: relative;
     left: 15px;
+}
+
+#sun{
+    display:none;
+}
+
+.sun_moon_icon{
+    font-size: 22px;
 }
 
 
@@ -52,9 +96,7 @@ header {
     cursor: pointer; 
 
     /* Soft shadow */
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.06),
-        0 6px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--card-shadow); 
 
     transition: all 0.2s ease;
 }
@@ -77,11 +119,10 @@ header {
     border: 1px solid white;
     border-radius: 30px;
     padding: 20px;
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--primary-text);
     height: 30vh;
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.06),
-        0 6px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--card-shadow);
 
     transition: all 0.2s ease;
 }
@@ -89,7 +130,8 @@ header {
 .tasks_section{
     width: 100%;
     height: 60vh;
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--primary-text);
     padding: 20px;
     align-items: center;
     margin:0 auto ;
@@ -97,9 +139,7 @@ header {
     /* border and shadows */
     border: 1px solid white;
     border-radius: 30px;
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.06),
-        0 6px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--card-shadow);
 
     transition: all 0.2s ease;
 }
@@ -112,14 +152,13 @@ header {
 
 .commor_for_quick_and_pomodoro{
     border: 2px solid white;
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--primary-text);
     height: 40vh;
     padding: 20px;
     border: 1px solid white;
     border-radius: 30px;
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.06),
-        0 6px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--card-shadow);
 
     transition: all 0.2s ease;
 }
@@ -132,14 +171,13 @@ header {
 
 .common_for_progress_and_consistency{
     border: 2px solid white;
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--primary-text);
     height: 20vh;
     padding: 20px;
     border: 1px solid white;
     border-radius: 30px;
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.06),
-        0 6px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--card-shadow);
     transition: all 0.2s ease;
     margin: 30px 0;
 }

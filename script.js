@@ -62,3 +62,23 @@ dynamic_greeting();
 setInterval(dynamic_greeting, 1000); 
 
 
+const themeButton = document.getElementById("light_dark_toggle");
+
+themeButton.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+    moon.style.display = "none";
+
+        if (document.body.classList.contains("dark-mode")) {
+
+        moon.style.display = "none";
+        sun.style.display = "block";
+
+    } else {
+
+        moon.style.display = "block";
+        sun.style.display = "none";
+
+    }
+});
+
