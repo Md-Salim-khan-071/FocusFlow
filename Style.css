@@ -15,6 +15,11 @@
     --card-shadow:
         0 2px 4px rgba(0, 0, 0, 0.06),
         0 6px 12px rgba(0, 0, 0, 0.08);
+
+    /*  hovers shadow */
+    --button-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 body.dark-mode {
@@ -28,12 +33,16 @@ body.dark-mode {
     --secondary-text: #94a3b8;
 
     /* Borders */
-    --border-color: #334155;
+    --border-color: #1d2126;
 
     /* Shadows */
     --card-shadow:
         0 4px 12px rgba(0, 0, 0, 0.35);
 
+    /*  hovers shadow */
+    --button-shadow:
+        0 4px 8px rgba(136, 133, 133, 0.426),
+        0 10px 20px rgb(62, 61, 61);
 }
 
 * {
@@ -103,9 +112,7 @@ header {
 
 .light_dark_toggle:hover {
     transform: translateY(-2px);
-    box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.08),
-        0 10px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--button-shadow)
 }
 
 .calender_weather_quote{
@@ -116,15 +123,43 @@ header {
   
 }
 .common_for_calender_weather_quote{
-    border: 1px solid white;
+    border: var(--border-color);
     border-radius: 30px;
     padding: 20px;
+    width: 453.33px;
     background-color: var(--card-bg);
     color: var(--primary-text);
     height: 30vh;
     box-shadow: var(--card-shadow);
 
     transition: all 0.2s ease;
+}
+
+#quote_text{
+    margin: 10px 0;
+    height: 10vh;
+    overflow-y: auto;
+}
+
+#next_quote{
+    margin-left: 150px;
+    padding: 4px;
+    background-color: white;
+    box-shadow: var(--card-shadow);
+    border: solid 2px rgb(253, 244, 244);
+    border-radius: 10px;
+    
+}
+#next_quote:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--button-shadow)
+}
+
+
+
+#live_date{
+    color: var(--secondary-text);
+    padding: 5px;
 }
 
 .tasks_section{
@@ -137,7 +172,7 @@ header {
     margin:0 auto ;
     margin-top: 30px;
     /* border and shadows */
-    border: 1px solid white;
+    border: var(--border-color);
     border-radius: 30px;
     box-shadow: var(--card-shadow);
 
@@ -156,7 +191,7 @@ header {
     color: var(--primary-text);
     height: 40vh;
     padding: 20px;
-    border: 1px solid white;
+    border: var(--border-color);
     border-radius: 30px;
     box-shadow: var(--card-shadow);
 
@@ -175,7 +210,7 @@ header {
     color: var(--primary-text);
     height: 20vh;
     padding: 20px;
-    border: 1px solid white;
+    border: var(--border-color);
     border-radius: 30px;
     box-shadow: var(--card-shadow);
     transition: all 0.2s ease;

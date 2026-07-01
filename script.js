@@ -16,28 +16,6 @@ liveclock();   // callimg the function
 setInterval(liveclock, 1000);  // running the function every second( 1000 mili seconds )
 
 
-function livedate(){
-    const today = new Date();
-    //creating days array
-    const days=["sunday","monday","Tuesday","Wednesday","Thursdaay","Friday","Saturday"];
-    // creating months array
-    const months=["January","Febreuary","Mar","April","May","June","July","August","September","October","November","December"]
-    // getting the day and month as a number 0-6 which we will convert later into words using above arrays
-    let day = today.getDay();
-    day = days[day];
-
-    let month = today.getMonth();
-    month = months[month]
-
-    let date = today.getDate();
-
-    const current_date = `${day} , ${month} ${date}`
-    document.getElementById("live_date").textContent = current_date; 
-}
-livedate();
-setInterval(livedate, 1000); 
-
-
 function dynamic_greeting(){
     const greet = new Date();
 
@@ -82,3 +60,41 @@ themeButton.addEventListener("click", function () {
     }
 });
 
+function livedate(){
+    const today = new Date();
+    //creating days array
+    const days=["sunday","monday","Tuesday","Wednesday","Thursdaay","Friday","Saturday"];
+    // creating months array
+    const months=["January","Febreuary","Mar","April","May","June","July","August","September","October","November","December"]
+    // getting the day and month as a number 0-6 which we will convert later into words using above arrays
+    let day = today.getDay();
+    day = days[day];
+
+    let month = today.getMonth();
+    month = months[month]
+
+    let date = today.getDate();
+
+    const current_day = `${day}`
+    document.getElementById("live_day").textContent = current_day; 
+
+    const current_date = `${month} ${date}`
+    document.getElementById("live_date").textContent = current_date; 
+}
+livedate();
+setInterval(livedate, 1000); 
+
+
+async function load_quote() {
+    const response = await fetch("https://dummyjson.com/quotes/random");
+    // The Response object isn't the quote itself. It's a package that contains the quote.
+    const data = await response.json();  //"Open the package and convert its contents into a JavaScript object."
+
+    document.getElementById("quote_text").textContent=`"${data.quote}"`;
+
+    document.getElementById("quote_author").textContent=`-${data.author}`;
+}
+load_quote();
+
+const newbutton = document.getElementById("next_quote");
+newbutton.addEventListener("click", load_quote);
