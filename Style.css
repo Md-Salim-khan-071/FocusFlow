@@ -29,7 +29,7 @@ body.dark-mode {
     --card-bg: #1e293b;
 
     /* Text */
-    --primary-text: #f8fafc;
+    --primary-text: #f0f1f3;
     --secondary-text: #94a3b8;
 
     /* Borders */
@@ -135,18 +135,44 @@ header {
     transition: all 0.2s ease;
 }
 
+
+.weather{
+    padding: 20px;
+}
+#temperature{
+    margin: 20px 0 5px 0 ;
+}
+.weather_type_and_weather_icon{
+    display: flex;
+    justify-content: space-between;
+    color: var(--secondary-text);
+}
+#city{
+    position: relative;
+    bottom: 15px;
+    color: var(--secondary-text);
+}
+.humidity_and_wind{
+    display: flex;
+    gap: 25px;
+    color: var(--secondary-text);
+}
+
 #quote_text{
     margin: 10px 0;
     height: 10vh;
     overflow-y: auto;
 }
+.quote_heading_and_refresh_box{
+    display: flex;
+    justify-content: space-between;
+}
 
 #next_quote{
-    margin-left: 150px;
     padding: 4px;
     background-color: white;
-    box-shadow: var(--card-shadow);
-    border: solid 2px rgb(253, 244, 244);
+    box-shadow: var(--card-shadow); 
+    border: solid 2px rgb(255, 255, 255);
     border-radius: 10px;
     
 }
@@ -159,7 +185,7 @@ header {
 
 #live_date{
     color: var(--secondary-text);
-    padding: 5px;
+    padding: 14px 0 ;
 }
 
 .tasks_section{

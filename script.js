@@ -98,3 +98,90 @@ load_quote();
 
 const newbutton = document.getElementById("next_quote");
 newbutton.addEventListener("click", load_quote);
+
+
+function getlocation(){
+    navigator.geolocation.getCurrentPosition(success); // success is the below function 
+}
+// position is an object that multiuple information but we need only two : latitude and logitude 
+function success(position){
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    console.log(latitude);
+    console.log(longitude);
+
+    loadWeather(latitude, longitude);  // this is calling below async function .  
+}
+getlocation();
+async function loadWeather(latitude, longitude){
+
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`;
+
+    // const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`;
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    // the data that we need is stored in another folder called current in the data folder . hence it nested as : data->current->data that we need .  
+    const temperature = data.current.temperature_2m;
+    const humidity =  data.current.relative_humidity_2m;
+    const windspeed = data.current.wind_speed_10m;
+    const weathercode = data.current.weather_code;
+    const description = getweatherdescription(weathercode); 
+    const symbol = getweathersymbol(weathercode);
+
+    document.getElementById("temperature").textContent=`${temperature}°C`;
+    document.getElementById("humidity").textContent=`💧 ${humidity}%`;
+    document.getElementById("wind").textContent=`🍃${windspeed}km/h`;
+    document.getElementById("temperature").textContent=`${temperature}°C`;
+    document.getElementById("weather").textContent=`${description}`;
+    document.getElementById("weather_symbol").textContent=`${symbol}`;
+}
+// function to get weather info . as api returns weather codes like 2,61,71 etc . we need to convert them into meaningfull text and symbols 
+function getweatherdescription(code){
+    switch(code){
+        case 0:
+            return "Clear Sky";
+        case 1:
+            return "Mainly Clear";
+        case 2:
+            return "Partly Cloudy";
+        case 3:
+            return "Overcast";
+        case 45:
+            return "Fog";
+        case 61:
+            return "Rain";
+        case 71:
+            return "Snow";
+        case 95:
+            return "Thunderstorm";
+        default:
+            return "Weather Unknown";
+    }
+}
+// function for the same work as above but symbols displayfunction weather_description(code){
+function getweathersymbol(code){
+    switch(code){
+        case 0:
+            return "☀";
+        case 1:
+            return "🌤";
+        case 2:
+            return "⛅";
+        case 3:
+            return "☁";
+        case 45:
+            return "🌫";
+        case 61:
+            return "🌧";
+        case 71:
+            return "❄";
+        case 95:
+            return "⛈";
+        default:
+            return "Weather Unknown";
+    }
+}
