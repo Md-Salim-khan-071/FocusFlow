@@ -183,13 +183,10 @@ header {
     box-shadow: var(--button-shadow)
 }
 
-
-
 #live_date{
     color: var(--secondary-text);
     padding: 14px 0 ;
-}
-
+} 
 
 /* task section styling begins */
 .tasks_section{
