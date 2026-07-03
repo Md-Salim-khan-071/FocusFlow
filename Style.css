@@ -3,6 +3,7 @@
     /* Backgrounds */
     --bg-color: rgb(246, 248, 251);
     --card-bg: white;
+    --inside-sections: rgb(238, 236, 236);
 
     /* Text */
     --primary-text: #1f2937;
@@ -27,6 +28,7 @@ body.dark-mode {
     /* Backgrounds */
     --bg-color: #0f172a;
     --card-bg: #1e293b;
+    --inside-sections: #18202e;
 
     /* Text */
     --primary-text: #f0f1f3;
@@ -188,12 +190,14 @@ header {
     padding: 14px 0 ;
 }
 
+
+/* task section styling begins */
 .tasks_section{
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     background-color: var(--card-bg);
     color: var(--primary-text);
-    padding: 20px;
+    padding: 30px;
     align-items: center;
     margin:0 auto ;
     margin-top: 30px;
@@ -201,9 +205,81 @@ header {
     border: var(--border-color);
     border-radius: 30px;
     box-shadow: var(--card-shadow);
-
     transition: all 0.2s ease;
 }
+.task_section_heading{
+    color: var(--secondary-text);
+    display: flex;
+    justify-content: space-between;
+}
+.toggle_buttons_section{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid var(--inside-sections);
+    border-radius: 35px;
+    background-color: var(--inside-sections);
+}
+.common_for_task_section_buttons{
+    all: unset;
+    border: 2px solid var(--card-bg);
+    border-radius: 20px;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 30vw;
+    text-align: center;
+    background-color: var(--card-bg);
+    cursor: pointer;
+}
+#subtitle{
+    margin: 20px 0; 
+    color: var(--secondary-text);
+}
+.add_tasks_full_section{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.common_in_add_section{
+    background-color: var(--inside-sections);
+    border: 2px solid var(--inside-sections);
+    border-radius: 20px;
+    padding: 10px 10px;
+    color: var(--primary-text);
+}
+#task_category{
+    max-width: 100%;
+    width: 10vw;
+    text-align: center;
+}
+#add_button{
+    max-width: 100%;
+    width: 10vw;
+}
+.input_area{
+    max-width: 100%;
+    width: 63vw;
+}
+.input_area:focus{
+    outline: none; 
+    border-color: #6355d8; 
+    box-shadow: 0 0 0 4px rgba(99, 85, 216, 0.15);
+}
+.active_tasks{
+    border: 2px solid red;
+    margin: 20px 0 10px 0;
+    height: 18vh;
+}
+.completed_heading{
+    text-align: center;
+}
+
+
+
+
+
+
 
 .quicknotes_pomodoro{
     gap: 20px;

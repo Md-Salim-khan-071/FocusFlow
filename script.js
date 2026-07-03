@@ -112,6 +112,7 @@ function success(position){
     console.log(longitude);
 
     loadWeather(latitude, longitude);  // this is calling below async function .  
+    getcityname(latitude,longitude);   // below function
 }
 getlocation();
 async function loadWeather(latitude, longitude){
@@ -184,4 +185,12 @@ function getweathersymbol(code){
         default:
             return "Weather Unknown";
     }
+}
+// for displaying city name 
+// we will use an api from open-meteo
+async function getcityname(latitude,longitude){
+    const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
 }
