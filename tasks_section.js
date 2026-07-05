@@ -26,7 +26,9 @@ function addTask() {
 
     tasks.push(task)  // pushes the object into the array 
     // console.log(tasks);
+    saveTasks();
     renderTasks();  // bcoz the below function should run after we add the tasks
+    
     taskInput.value = ""; //removes the text typed inside the input field after adding 
 }
 addButton.addEventListener("click", addTask);
@@ -47,6 +49,7 @@ function renderTasks(){
         checkbox.checked = task.completed   // task is the object where completed : false . when the checkbox is not checked it stays false . if initially in the object if completed : true the checkbox appears ticked from the start 
         checkbox.addEventListener("click", () => {
             task.completed = checkbox.checked;
+            saveTasks();
             renderTasks()   // calling the function after checkbox , so that striking out and everything happens 
         }); //this listens to the chechboxs check . why not click ? bcoz checkboz goes checked -> unchecked -> checked hence it is change .
 
@@ -114,13 +117,11 @@ function createTaskCard(){
     const taskElement = document.createElement("div");   // creates the main div that  contains all the things of one task  
     taskElement.classList.add("task_box");   // add a classs to created div
     return taskElement;
-
-    
-    
 }
 
 function deleteTask(id) {
     tasks = tasks.filter(task=>task.id !== id);  // Keep every task whose ID is not equal to the ID we want to delete.  filter creates a new array that specifies the condition
+    saveTasks();
     renderTasks();
 }  // this function removes the task from the  array and hence it is removed
 
@@ -134,7 +135,26 @@ function editTask(id) {
     return;
     }
     task.title = newTitle.trim();
+    saveTasks()
     renderTasks()
 }
 
+function saveTasks(){
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+} // we should save the data after each modification like add , edit , delete . so we will call this function after each modification function
+
+function loadTasks(){
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+        tasks = JSON.parse(savedTasks);
+    }
+}
+
+loadTasks();
 renderTasks();
+
+
+
+// important notes :
+// tasks is an array . 
+// task is the object containing all task info . each "task" object will be stores as 1 element in "tasks" array 
