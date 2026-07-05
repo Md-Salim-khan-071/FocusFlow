@@ -3,7 +3,8 @@
     /* Backgrounds */
     --bg-color: rgb(246, 248, 251);
     --card-bg: white;
-    --inside-sections: rgb(238, 236, 236);
+    --inside-sections: #ededf4;
+    --task-hover: rgb(249, 248, 248);
 
     /* Text */
     --primary-text: #1f2937;
@@ -29,6 +30,7 @@ body.dark-mode {
     --bg-color: #0f172a;
     --card-bg: #1e293b;
     --inside-sections: #18202e;
+    --task-hover: #132035e1;
 
     /* Text */
     --primary-text: #f0f1f3;
@@ -188,10 +190,13 @@ header {
     padding: 14px 0 ;
 } 
 
+
+
 /* task section styling begins */
 .tasks_section{
     width: 100%;
-    height: 70vh;
+    min-height: 70vh;
+    max-height: fit-content;
     background-color: var(--card-bg);
     color: var(--primary-text);
     padding: 30px;
@@ -264,12 +269,54 @@ header {
     box-shadow: 0 0 0 4px rgba(99, 85, 216, 0.15);
 }
 .active_tasks{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin: 20px 0 10px 0;
-    height: 18vh;
+    min-height: 18vh;
+    max-height: fit-content;
+    padding: 10px;
 }
+.task_box{    /* css class created in js */
+    /* border: 2px solid blue; */
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: larger;
+}
+.left_section_of_taskbox{
+    display: flex;
+    gap: 10px;
+}
+.task_box:hover{
+    background-color: var(--task-hover);
+}
+.common_for_title_and_action_buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.common_for_edit-and-delete{
+    border: none;
+    margin: 0 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+}
+.task_box:hover .common_for_edit-and-delete{
+    opacity: 1;
+    visibility: visible;
+}
+
+
 .completed_heading{
     text-align: center;
+}
+.completed-task{
+    text-decoration: line-through;
+    color: var(--secondary-text);
+    opacity: 0.7;
+
 }
 
 
