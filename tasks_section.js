@@ -27,6 +27,7 @@ function addTask() {
     tasks.push(task)  // pushes the object into the array 
     // console.log(tasks);
     renderTasks();  // bcoz the below function should run after we add the tasks
+    taskInput.value = ""; //removes the text typed inside the input field after adding 
 }
 addButton.addEventListener("click", addTask);
 
@@ -34,10 +35,9 @@ function renderTasks(){
     taskList.innerHTML = "";
     completedTaskList.innerHTML = "";
     for (const task of tasks){
-        const taskElement = document.createElement("div");   // creates the main div that  contains all the tings of one task  
-        taskElement.classList.add("task_box");   // add a classs to created div
+        const taskElement = createTaskCard(task);
         
-        const taskLeft = document.createElement("div");   // creates the main div that  contains all the tings of one task  
+        const taskLeft = document.createElement("div");   // creates the the container for the left section which has checkbox and task title  
         taskLeft.classList.add("left_section_of_taskbox");
 
         const checkbox = document.createElement("input");  // creates the checkbox at the start of the task 
@@ -66,7 +66,7 @@ function renderTasks(){
         taskElement.appendChild(taskLeft);
 
 
-        
+
         const task_actions = document.createElement("div")
         task_actions.classList.add("task-actions");
         
@@ -74,6 +74,10 @@ function renderTasks(){
         edit_button.classList.add("edit-task");
         edit_button.classList.add("common_for_edit-and-delete");
         edit_button.textContent="🖋️"
+        edit_button.addEventListener("click", () => {
+            editTask(task.id);  // editTask is the function created . and task.id is sent as a parameter .
+        });   // gets the id of the task , when edit is clicked .
+
 
         const delete_button = document.createElement("button")
         delete_button.classList.add("delete-task");
@@ -105,9 +109,32 @@ function renderTasks(){
         completedSection.style.display = "block";
     }
 }
+
+function createTaskCard(){
+    const taskElement = document.createElement("div");   // creates the main div that  contains all the things of one task  
+    taskElement.classList.add("task_box");   // add a classs to created div
+    return taskElement;
+
+    
+    
+}
+
 function deleteTask(id) {
     tasks = tasks.filter(task=>task.id !== id);  // Keep every task whose ID is not equal to the ID we want to delete.  filter creates a new array that specifies the condition
     renderTasks();
 }  // this function removes the task from the  array and hence it is removed
+
+function editTask(id) {
+    const task = tasks.find(task => task.id === id);
+    const newTitle = prompt("Edit Task", task.title);  // prompt is browser default . pops an alert like edit option 
+    if (newTitle === null) {
+    return;
+    }
+    if (newTitle.trim() === "") {   // trim removes empty spaces . if user just uses spaces and enters , then it will not be taken
+    return;
+    }
+    task.title = newTitle.trim();
+    renderTasks()
+}
 
 renderTasks();
