@@ -242,6 +242,11 @@ header {
     position: relative;
     bottom: 4px;
 }
+.common_for_task_section_buttons:hover{
+    background-color: var(--card-bg);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
 .common_for_task_section_buttons:focus{
     background-color: var(--card-bg); 
     border: 2px solid var(--card-bg); 
@@ -318,8 +323,6 @@ header {
     opacity: 1;
     visibility: visible;
 }
-
-
 .completed_heading{
     text-align: center;
 }
@@ -342,20 +345,95 @@ header {
     margin: 30px 0;
 }
 
-.commor_for_quick_and_pomodoro{
+.common_for_quick_and_pomodoro{
     border: 2px solid white;
     background-color: var(--card-bg);
     color: var(--primary-text);
-    height: 40vh;
+    height: 50vh;
     padding: 20px;
     border: var(--border-color);
     border-radius: 30px;
     box-shadow: var(--card-shadow);
-
     transition: all 0.2s ease;
 }
 
-
+.pomodoro{
+    min-width:  600px;
+}
+.pomodoro_header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: var(--secondary-text);
+}
+.focus_break_toggle{
+    border: 2px solid var(--inside-sections);
+    background-color: var(--inside-sections);
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.common_for_FocusBreak{
+    all: unset;
+    min-width: 184px;
+    border: 2px solid var(--inside-sections);
+    background-color: var(--inside-sections);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 0 4.5px;
+    text-align: center;
+}
+.common_for_FocusBreak:hover{
+    background-color: var(--card-bg);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+.active_mode{
+    background-color: var(--accent-color);
+    color: white;
+}  /* this class will be added with JS and will say which tab is active */
+.timer{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+#timer{
+    border: 5px solid var(--inside-sections);
+    border-radius: 50%;
+    padding: 40px 30px;
+}
+.start_and_refresh{
+    display: flex;
+    gap:20px;
+    /* justify-content: center; */
+}
+#start_timer{
+    all: unset;
+    text-align: center;
+    width: 450px;
+    border: 2px solid rgba(0, 76, 255, 0.722);
+    border-radius: 30px;
+    background-color: rgba(0, 76, 255, 0.722);
+    color: white;
+    padding: 15px ;
+}
+#start_timer:hover{
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+#refresh_timer{
+    all:unset;
+    /* border: 2px solid red; */
+    width: 50px;
+    text-align: center;
+    font-size: 50 ;
+}
+#refresh_timer:hover{
+    cursor: pointer;
+    transform: translateY(-2px);
+}
 /* .progress_and_consistency {
     
 } */
