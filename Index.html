@@ -78,9 +78,18 @@
 
 `       <div class="toggle_buttons_section">
             
-            <button id="daily_tab" class="common_for_task_section_buttons"> ⟳ Daily </button>
-            <button id="weekly_tab" class="common_for_task_section_buttons"> 🗒 weekly </button>
-            <button id="milestones_tab" class="common_for_task_section_buttons"> 🎯 Milestones </button>
+            <button id="daily_tab" class="common_for_task_section_buttons"> 
+                <p>⟳ Daily</p>
+                <p id="length_of_daily_task"> 3 </p>    
+            </button>
+            <button id="weekly_tab" class="common_for_task_section_buttons">
+                <p class="daily_and_milestone_heading">🗒 weekly</p>
+                <p id="length_of_weekly_task"> 3 </p>   
+            </button>
+            <button id="milestones_tab" class="common_for_task_section_buttons"> 
+                <p class="daily_and_milestone_heading">🎯 Milestones</p>
+                <p id="length_of_milestone_task"> 3 </p>     
+            </button>
 
         </div>
 
@@ -119,7 +128,7 @@
             <p class="completed_heading"> Completed </p>
         </div>
         <div class="completed_tasks">
-
+                
         </div>
     </div>
 
