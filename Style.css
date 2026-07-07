@@ -345,6 +345,28 @@ header {
     margin: 30px 0;
 }
 
+.quick_notes{
+    width: 708px;
+}
+.quick_notes_header{
+    display: flex;
+    justify-content: space-between;
+}
+.quick_notes_heading{
+    color: var(--secondary-text);
+}
+#quick_notes{
+    all: unset;
+    margin: 10px 0;
+    border: 2px solid var(--inside-sections);
+    background-color: var(--inside-sections);
+    border-radius: 30px;
+    height: 36vh;
+    width: 648px;
+    padding: 12px;
+}
+
+
 .common_for_quick_and_pomodoro{
     border: 2px solid white;
     background-color: var(--card-bg);
@@ -391,8 +413,8 @@ header {
     transform: translateY(-2px);
 }
 .active_mode{
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--card-bg);
+    color: var(--primary-text);
 }  /* this class will be added with JS and will say which tab is active */
 .timer{
     display: flex;
@@ -403,42 +425,47 @@ header {
     border: 5px solid var(--inside-sections);
     border-radius: 50%;
     padding: 40px 30px;
-}
+}   
 .start_and_refresh{
     display: flex;
     gap:20px;
     /* justify-content: center; */
 }
-#start_timer{
+.common_for_start_and_pause{
     all: unset;
     text-align: center;
-    width: 450px;
+    width: 220px;
     border: 2px solid rgba(0, 76, 255, 0.722);
     border-radius: 30px;
     background-color: rgba(0, 76, 255, 0.722);
     color: white;
     padding: 15px ;
 }
-#start_timer:hover{
+.common_for_start_and_pause:hover{
     cursor: pointer;
     transform: translateY(-2px);
 }
-#refresh_timer{
+#reset_timer{
     all:unset;
     /* border: 2px solid red; */
     width: 50px;
     text-align: center;
     font-size: 50 ;
 }
-#refresh_timer:hover{
+#reset_timer:hover{
     cursor: pointer;
     transform: translateY(-2px);
 }
+
 /* .progress_and_consistency {
     
 } */
 
 
+.progress_and_consistency{
+    display: flex;
+    gap: 20px;
+}
 .common_for_progress_and_consistency{
     border: 2px solid white;
     background-color: var(--card-bg);

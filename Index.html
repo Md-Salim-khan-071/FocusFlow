@@ -47,7 +47,7 @@
                 <h4 id="weather"> partly cloudly </h4>
                 <h1 id="weather_symbol"> ⛅ </h1>
             </div>
-            <h3 id="city"> Bengaluru </h3>
+            <!-- <h3 id="city"> Bengaluru </h3> -->
             <div class="humidity_and_wind">
                 <h4 id="humidity"> Humidity</h4>
                 <h4 id="wind"> Wind </h4>
@@ -135,14 +135,22 @@
     <div class="quicknotes_pomodoro">
 
         <div class="quick_notes common_for_quick_and_pomodoro">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores sed repudiandae hic nulla. Qui, non. Asperiores, corrupti voluptatem qui eveniet assumenda cumque id laudantium excepturi, alias maiores velit? Nisi dolore aspernatur vel corporis esse. Animi reiciendis quod natus porro laboriosam esse labore expedita ipsum accusamus aliquid consectetur ea blanditiis fugit veritatis, modi rem, cumque magnam. Magnam, suscipit! Expedita nam tempore eaque quos tenetur, aliquid nulla corporis officiis magni tempora, laboriosam vero, molestiae a iusto impedit praesentium excepturi eum dicta adipisci?
+
+            <div class="quick_notes_header">
+
+                <h3 class="quick_notes_heading"> 📋Quick Notes</h3>
+                <p id="last_saved"> last saved </p>
+                
+            </div>
+
+            <textarea id="quick_notes" placeholder="eg : should i buy a notes today"></textarea>
         </div>
 
         <div class="pomodoro common_for_quick_and_pomodoro">
 
             <div class="pomodoro_header">
                 <h3 class="pomodoro_title"> ⏱️ Pomodoro </h3>
-                <p id="session_count"> 0 sessions today </p>
+                <p id="session_count">  sessions today </p>
             </div>
 
             <div class="focus_break_toggle">
@@ -151,12 +159,13 @@
             </div>
 
             <div class="timer">
-                <h1 id="timer"> 25:00 </h1>
+                <h1 id="timer"> . </h1>
             </div>
             
             <div class="start_and_refresh">
-                <button id="start_timer"> Start </button>
-                <button id="refresh_timer"> <h1>🗘</h1> </button>
+                <button id="start_timer" class="common_for_start_and_pause"> Start </button>
+                <button id="pause_timer" class="common_for_start_and_pause"> Pause </button>
+                <button id="reset_timer"> <h1>🗘</h1> </button>
             </div>
         </div>
 
@@ -177,5 +186,7 @@
 
 <script src="script.js"></script>
 <script src="tasks_section.js"></script>
+<script src="pomodoro.js"></script>
+<script src="quick notes.js"></script>
 </body>
 </html>
