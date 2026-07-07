@@ -55,6 +55,8 @@ function addTask() {
     renderTasks();  // bcoz the below function should run after we add the tasks
     
     taskInput.value = ""; //removes the text typed inside the input field after adding 
+
+    updateProgressCard()  // function from progress.js
 }
 addButton.addEventListener("click", addTask);
 
@@ -144,18 +146,21 @@ function renderTasks(){
     }
 
     updateProgress() // update progress function call 
+    updateProgressCard()  // function from progress.js
 }
 
 function createTaskCard(){
     const taskElement = document.createElement("div");   // creates the main div that  contains all the things of one task  
     taskElement.classList.add("task_box");   // add a classs to created div
     return taskElement;
+    updateProgressCard()  // function from progress.js
 }
 
 function deleteTask(id) {
     tasks = tasks.filter(task=>task.id !== id);  // Keep every task whose ID is not equal to the ID we want to delete.  filter creates a new array that specifies the condition
     saveTasks();
     renderTasks();
+    updateProgressCard()  // function from progress.js
 }  // this function removes the task from the  array and hence it is removed
 
 function editTask(id) {
@@ -170,10 +175,12 @@ function editTask(id) {
     task.title = newTitle.trim();
     saveTasks()
     renderTasks()
+    updateProgressCard()  // function from progress.js
 }
 
 function saveTasks(){
     localStorage.setItem("tasks",JSON.stringify(tasks));
+    updateProgressCard()  // function from progress.js
 } // we should save the data after each modification like add , edit , delete . so we will call this function after each modification function
 
 function loadTasks(){
@@ -181,6 +188,7 @@ function loadTasks(){
     if (savedTasks) {
         tasks = JSON.parse(savedTasks);
     }
+    updateProgressCard()  // function from progress.js
 }
 
 function updateProgress(){
