@@ -15,6 +15,7 @@ function initializeHeatmap(){
         return monthData;
     }
     appendMissingMonths(heatmapData);
+    calculateStreak();
     return heatmapData;
 }
 const initialize_data = initializeHeatmap();
@@ -99,9 +100,6 @@ function groupHeatmapByMonth(heatmapData) { // the purpose of this function is c
     }
     return groupedData;
 }
-const data = initializeHeatmap();
-const grouped = groupHeatmapByMonth(data);
-console.log(grouped);
 
 
 // now rendering all this on the page
@@ -137,7 +135,8 @@ function renderHeatmap(heatmapData){
             cell.textContent = "";
             monthGrid.appendChild(cell);
         }   
-    }    
+    }
+      
 }
 
 // now we need get the data object of todays date  for updating the cell 
@@ -159,7 +158,7 @@ function getTodayHeatmapEntry(heatmapData) { // purpose is to only find todays d
 }
 
 function updateTodayHeatmap(productivityData) {
-
+    
     // Load complete heatmap data
     const heatmapData = LoadHeatmap();
 
@@ -183,8 +182,8 @@ function updateTodayHeatmap(productivityData) {
 
     // Calculate score
     const score = calculateHeatmapScore(todayEntry);
-    console.log("Returned Score =", score);
-    console.log("Calculated Score:", score);
+    // console.log("Returned Score =", score);
+    // console.log("Calculated Score:", score);
 
     // Store score
     todayEntry.score = score;
@@ -196,6 +195,8 @@ function updateTodayHeatmap(productivityData) {
 
     // Re-render UI
     renderHeatmap(heatmapData);
+
+    calculateStreak();
 
 }
 
@@ -236,7 +237,36 @@ function calculateHeatmapScore(todayEntry){
     }
 }
 
+function calculateStreak() {
+    const heatmapData = LoadHeatmap();
+    const todayIndex = getTodayHeatmapIndex(heatmapData);
+    let streak = 0;
+    for (let i = todayIndex; i >= 0; i--) {
+        const day = heatmapData[i];
+        if (day.score > 0) {
+            streak++;
+        }
+        else {
+            break;
+        }
+    }
+    const streakText = streak === 1 ? "Day" : "Days";
+    document.getElementById("streak").textContent =`🔥 ${streak} ${streakText} Streak`;
+}
 
+function getTodayHeatmapIndex(heatmapData) {  // this function is to get todays date .  for streak calculation
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const todayIndex = heatmapData.findIndex(
+        day => day.date === formattedDate
+    );
+    return todayIndex;
+}
 
 function SaveHeatmap(data){
     const jsondata = JSON.stringify(data);  // data will be dictionary one element  . all the info about one task or focus session will be stored in "data" .
