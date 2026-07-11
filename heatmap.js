@@ -1,6 +1,10 @@
 
 const heatmap_storage_key = "FocusFlowHeatmap"
 
+const tooltip = document.querySelector(".heatmap-tooltip");
+
+const heatmap_info = document.querySelector(".heatmap_info")
+
 function initializeHeatmap(){
     const heatmapData = LoadHeatmap();   // loading the existing heatmap data . loaded as an array  . if its a first time user then there will be no existing data so the below if block
     if(heatmapData.length === 0){
@@ -131,12 +135,53 @@ function renderHeatmap(heatmapData){
             const cell = document.createElement("div") // cell boxes will be created 
             cell.classList.add("heatmap-cell");
             cell.classList.add(`level${day.score}`);   //this will create a class name based on scroe . example score = 0  . classname becomes level0 . we have already defined colors for each level 
+
+            cell.addEventListener("mouseenter", () => {
+                tooltip.innerHTML = `
+                    <strong>${day.date}</strong><br>
+                    ✅ Tasks: ${day.completedTasks}/${day.totalTasks}<br>
+                    🍅 Pomodoros: ${day.completedPomodoros}<br>
+                    🔥 Score: Level ${day.score}
+                `;
+                tooltip.style.display = "block";
+            });
+            cell.addEventListener("mousemove", (event) => {
+                tooltip.style.left = event.pageX + 15 + "px";
+                tooltip.style.top = event.pageY + 15 + "px";
+            });
+            cell.addEventListener("mouseleave", () => {
+
+                tooltip.style.display = "none";
+            });
+
             const dayNumber = day.date.split("-")[2];
             cell.textContent = "";
             monthGrid.appendChild(cell);
         }   
     }
-      
+
+    const heatmap_information = document.getElementById("heatmap_info_button");
+    
+    heatmap_information.addEventListener("mouseenter",() =>{
+        heatmap_info.innerHTML = `
+        How is the score calculated ?<br>
+        completed tasks percentage * 0.6 <br>
+        completed  pomodor  percentage * 0.4 <br>
+        now this both are  added  to get a  final value <br>
+        0% : 0 , 1-25% : 1 , and so on 
+        `;
+        heatmap_info.style.display = "block";
+    });
+
+    // heatmap_information.addEventListener("mousemove", (event) => {
+    //     heatmap_info.style.left = event.pageX - 15 + "px";
+    //     heatmap_info.style.top = event.pageY + 15 + "px";
+    // });
+
+    heatmap_information.addEventListener("mouseleave",()=>{
+        heatmap_info.style.display = "none";
+    })
+    
 }
 
 // now we need get the data object of todays date  for updating the cell 
