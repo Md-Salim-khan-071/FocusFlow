@@ -600,11 +600,38 @@ header {
 .heatmap_header h4{
     color: var(--secondary-text);
 }
+
 .main_heatmap{
     margin: 10px 0;
-    border: 2px solid red;
+    background-color: var(--inside-sections);
+    border: 2px solid var(--inside-sections);
+    border-radius: 15px;
     height: 200px;
     width: 600px;
+    padding: 10px;
+    overflow-y: auto; 
+}
+.month-block h4{
+    margin: 10px 0;
+}
+.month-grid{
+    display:grid;
+    grid-template-columns:repeat(16,1fr);
+    gap:4px;
+}
+.heatmap-cell{
+
+    width:30px;
+    height:30px;
+
+    border:1px solid gray;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:12px;
+
 }
 
 

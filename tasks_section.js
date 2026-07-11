@@ -1,3 +1,4 @@
+
 let tasks = [];
 
 const taskInput = document.getElementById("input_area");
@@ -57,6 +58,8 @@ function addTask() {
     taskInput.value = ""; //removes the text typed inside the input field after adding 
 
     updateProgressCard()  // function from progress.js
+
+    syncHeatmapWithTasks() // helper function tfor the heatmap and task integration
 }
 addButton.addEventListener("click", addTask);
 
@@ -84,6 +87,7 @@ function renderTasks(){
             task.completed = checkbox.checked;
             saveTasks();
             renderTasks()   // calling the function after checkbox , so that striking out and everything happens 
+            syncHeatmapWithTasks() // helper function tfor the heatmap and task integration
         }); //this listens to the chechboxs check . why not click ? bcoz checkboz goes checked -> unchecked -> checked hence it is change .
 
 
@@ -161,6 +165,7 @@ function deleteTask(id) {
     saveTasks();
     renderTasks();
     updateProgressCard()  // function from progress.js
+    syncHeatmapWithTasks() // helper function tfor the heatmap and task integration
 }  // this function removes the task from the  array and hence it is removed
 
 function editTask(id) {
@@ -189,6 +194,7 @@ function loadTasks(){
         tasks = JSON.parse(savedTasks);
     }
     updateProgressCard()  // function from progress.js
+    syncHeatmapWithTasks() // helper function tfor the heatmap and task integration .
 }
 
 function updateProgress(){
@@ -225,6 +231,19 @@ loadTasks();
 renderTasks();
 
 
+function syncHeatmapWithTasks() {  // this is helper function that gets the total and completed tasks for the heatmap . this function will be called everytime when something changes in the task section 
+    console.log("syncHeatmapWithTasks called");
+    const totalTasks = tasks.length;
+
+    const completedTasks =
+        tasks.filter(task => task.completed).length;
+
+    updateTodayHeatmap({
+        totalTasks,
+        completedTasks
+    });
+
+}
 
 // important notes :
 // tasks is an array . 

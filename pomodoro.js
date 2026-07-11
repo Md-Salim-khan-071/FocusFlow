@@ -1,5 +1,7 @@
-const FOCUS_MINUTES = 25;
-const BREAK_MINUTES = 5;
+const POMODORO_STORAGE_KEY = "FocusFlowPomodoro";
+const FOCUS_MINUTES = 1;
+const BREAK_MINUTES = 1;
+
 
 let minutes = FOCUS_MINUTES;
 let seconds = 0;
@@ -57,8 +59,11 @@ function startTimer(){
             isRunning = false;
             
             if (currentState === "focus") {
-                take_A_break.play();
-                sessioncount++;
+                take_A_break.play(); 
+                sessioncount++;  
+                savePomodoro()
+                // this is where one session completes so here is where we are going integrate it with heatmap
+                syncHeatmapWithPomodoro();
                 document.getElementById("session_count").textContent=`${sessioncount} focus sessions completed today`
             } 
             else{
@@ -90,6 +95,66 @@ function resetTimer(){
     isRunning = false;
     updateDisplay()
 }
+
+function savePomodoro() {
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    const formattedDate = `${year}-${month}-${day}`;
+
+    const pomodoroData = {
+        date: formattedDate,
+        sessioncount: sessioncount
+    };
+
+    localStorage.setItem(
+        POMODORO_STORAGE_KEY,
+        JSON.stringify(pomodoroData)
+    );
+}
+
+
+
+function loadPomodoro() {
+
+    const storedData = localStorage.getItem(POMODORO_STORAGE_KEY);
+
+    if (!storedData) {
+        return;
+    }
+
+    const pomodoroData = JSON.parse(storedData);
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    const formattedDate = `${year}-${month}-${day}`;
+
+    if (pomodoroData.date === formattedDate) {
+
+        sessioncount = pomodoroData.sessioncount;
+
+    }
+    else {
+
+        sessioncount = 0;
+
+        savePomodoro();
+
+    }
+
+}
+
+loadPomodoro();
+document.getElementById("session_count").textContent =`${sessioncount} focus sessions completed today`;
+
 
 // focusButton.addEventListener("click",focusState)
 // function focusState(){
@@ -135,3 +200,11 @@ function switchMode(mode, duration) {
 }
 
 updateDisplay()
+
+function syncHeatmapWithPomodoro() {
+        // function to connect with heatmap
+    updateTodayHeatmap({
+        completedPomodoros: sessioncount
+    });
+
+}
