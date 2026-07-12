@@ -1,6 +1,6 @@
 const POMODORO_STORAGE_KEY = "FocusFlowPomodoro";
-const FOCUS_MINUTES = 1;
-const BREAK_MINUTES = 1;
+const FOCUS_MINUTES = 30;
+const BREAK_MINUTES = 10;
 
 
 let minutes = FOCUS_MINUTES;
