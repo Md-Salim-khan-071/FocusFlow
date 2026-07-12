@@ -41,7 +41,7 @@ function updateProgressCard(){
     circle.style.background =
     `
     conic-gradient(
-        #4CAF50 ${degrees}deg,
+        var(--button-color)  ${degrees}deg,
         var(--inside-sections) ${degrees}deg
     )
     
