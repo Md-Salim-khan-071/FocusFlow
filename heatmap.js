@@ -22,8 +22,8 @@ function initializeHeatmap(){
     calculateStreak();
     return heatmapData;
 }
-const initialize_data = initializeHeatmap();
-renderHeatmap(initialize_data);
+// const initialize_data = initializeHeatmap();
+// renderHeatmap(initialize_data);
 
 
 // suppose if a user uses the app in july and stays inactive for next 2 months and comeback  in october . then august , september should also be generated 

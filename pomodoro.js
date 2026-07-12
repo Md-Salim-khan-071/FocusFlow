@@ -152,7 +152,7 @@ function loadPomodoro() {
 
 }
 
-loadPomodoro();
+// loadPomodoro();
 document.getElementById("session_count").textContent =`${sessioncount} focus sessions completed today`;
 
 
@@ -199,7 +199,7 @@ function switchMode(mode, duration) {
     updateDisplay();
 }
 
-updateDisplay()
+// updateDisplay()
 
 function syncHeatmapWithPomodoro() {
         // function to connect with heatmap

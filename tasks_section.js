@@ -1,5 +1,7 @@
 
 let tasks = [];
+const LAST_OPEN_DATE_KEY = "FocusFlowLastOpenDate";    
+const LAST_OPEN_WEEK_KEY = "FocusFlowLastOpenWeek";    
 
 const taskInput = document.getElementById("input_area");
 const addButton = document.getElementById("add_button");
@@ -15,6 +17,13 @@ let selectedCategory = "Daily";  //  .. this says when page starts it should be 
 const dailyButton = document.getElementById("daily_tab");
 const weeklyButton = document.getElementById("weekly_tab");
 const milestoneButton = document.getElementById("milestones_tab");
+
+
+// for the task history 
+const taskHistoryButton = document.getElementById("task_history_button");
+const historyOverlay = document.querySelector(".history_overlay");
+const closeButton = document.getElementById("close_button");
+const historyContent = document.querySelector(".history_content");
 
 dailyButton.addEventListener("click", () => {
     selectedCategory = "Daily";
@@ -47,7 +56,10 @@ function addTask() {
     title: title,
     category: category,
     completed: false,   // initially task is incomplete
-    createdAt: new Date()  // stores date when task was  created 
+    createdAt: new Date(),  // stores date when task was  created 
+    // activeDate: getTodayDate(),
+    archived: false,
+    completedDate: null
     };
 
     tasks.push(task)  // pushes the object into the array 
@@ -68,7 +80,7 @@ function renderTasks(){
     taskList.innerHTML = "";
     completedTaskList.innerHTML = "";
 
-    const filteredTasks = tasks.filter(task => task.category === selectedCategory);
+    const filteredTasks = tasks.filter(task => task.category === selectedCategory && task.archived === false);
 
     for (const task of filteredTasks){   
         relatedCategorySubtitle()
@@ -183,6 +195,111 @@ function editTask(id) {
     updateProgressCard()  // function from progress.js
 }
 
+function checkForNewDate(){   // this function checks whether today is a new day or not . 
+    const formattedDate = getFormattedTodayDate();
+
+    const lastOpenDate = localStorage.getItem(LAST_OPEN_DATE_KEY); 
+    console.log(formattedDate);
+
+    if(lastOpenDate === null){
+       localStorage.setItem(LAST_OPEN_DATE_KEY, formattedDate);   // saves todays date 
+       return;
+    }
+    if (lastOpenDate === formattedDate) {
+        return;
+    }
+    else { 
+        dailyRollover();
+    }
+    localStorage.setItem(LAST_OPEN_DATE_KEY, formattedDate);  
+    // console.log(localStorage.getItem(LAST_OPEN_DATE_KEY)); // saves todays date 
+}
+
+function dailyRollover(){  // task is to loop through every daily task . if it is completed move to archive if  not rollover to next day . this runs only when new date occurs 
+    for (const task of tasks){
+
+        if(task.category === "Daily"){  // this if block for checking if the task category is daily 
+            if(task.completed === true){
+                task.archived = true;
+                task.completedDate = getFormattedTodayDate();
+            }
+        }
+    }
+    saveTasks();
+}
+
+function groupHistoryByDate(historyTasks){
+    const groupedHistory = {};
+    for (const task of historyTasks){
+        const dateKey = task.completedDate;
+        if (!groupedHistory[dateKey]){
+            groupedHistory[dateKey] = [];
+        }
+        groupedHistory[dateKey].push(task);
+    }
+    return groupedHistory;
+}
+function formatHistoryDate(dateString){
+    const date = new Date(dateString);
+    const options = {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    };
+    return date.toLocaleDateString("en-IN", options);
+}
+
+taskHistoryButton.addEventListener("click", () => {
+    console.log("History button clicked");
+    historyOverlay.style.display = "flex";
+    const historyTasks = tasks.filter(task => task.archived);
+
+    if (historyTasks.length === 0) {
+        historyContent.innerHTML = `
+            <div class="empty_history">
+                <h2>No completed tasks yet 📂</h2>
+                <p>Complete some tasks to build your history.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const groupedHistory = groupHistoryByDate(historyTasks);
+
+    historyContent.innerHTML = "";
+    const sortedHistory = Object.entries(groupedHistory).sort(
+        ([dateA], [dateB]) => new Date(dateB) - new Date(dateA)
+    );
+    for (const [date, tasksOnDate] of sortedHistory) {
+
+        // Create date heading
+        const dateHeading = document.createElement("h3");
+        dateHeading.textContent = `📅 ${formatHistoryDate(date)}`;
+        dateHeading.classList.add("history_date_heading");
+        historyContent.appendChild(dateHeading);
+
+        // Loop through tasks completed on that date
+        for (const task of tasksOnDate) {
+            const taskCard = document.createElement("div");
+            taskCard.classList.add("history_task_card");
+            taskCard.innerHTML = `
+                <div class="history_task_title">
+                    ✅ ${task.title}
+                </div>
+
+                <div class="history_task_details">
+                    📁 ${task.category} Task
+                </div>
+            `;
+            historyContent.appendChild(taskCard);
+        }
+    }
+});
+
+closeButton.addEventListener("click", () => {
+    historyOverlay.style.display = "none";
+});
+
 function saveTasks(){
     localStorage.setItem("tasks",JSON.stringify(tasks));
     updateProgressCard()  // function from progress.js
@@ -227,9 +344,6 @@ function lengthOfCategory(){
     document.getElementById("length_of_milestone_task").textContent=`${milestoneCount}`
 }
 
-loadTasks();
-renderTasks();
-
 
 function syncHeatmapWithTasks() {  // this is helper function that gets the total and completed tasks for the heatmap . this function will be called everytime when something changes in the task section 
     console.log("syncHeatmapWithTasks called");
@@ -245,6 +359,19 @@ function syncHeatmapWithTasks() {  // this is helper function that gets the tota
 
 }
 
+function getFormattedTodayDate(){
+    const today = new Date();  // get todays date 
+    // we need to  convert the recieved data in our format : (2026-07-28) 
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+}
+
+// loadTasks();
+// checkForNewDate();
+// renderTasks();
 // important notes :
 // tasks is an array . 
 // task is the object containing all task info . each "task" object will be stores as 1 element in "tasks" array 

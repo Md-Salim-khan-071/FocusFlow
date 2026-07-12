@@ -5,6 +5,7 @@
     --card-bg: white;
     --inside-sections: #ededf4;
     --task-hover: rgb(249, 248, 248);
+    --history-backgorund:  rgba(0, 0, 0, 0.825);
 
     /* Text */
     --primary-text: #1f2937;
@@ -31,7 +32,7 @@ body.dark-mode {
     --card-bg: #1e293b;
     --inside-sections: #18202e;
     --task-hover: #132035e1;
-
+    --history-backgorund:  rgba(255, 254, 254, 0.441);
     /* Text */
     --primary-text: #f0f1f3;
     --secondary-text: #94a3b8;
@@ -332,6 +333,97 @@ header {
     opacity: 0.7;
 
 }
+.task_history_button_box{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+#task_history_button{
+    border: none;
+    margin: 40px 0 20px 0;
+    width: 200px;
+    height: 40px;
+    background-color: rgba(0, 76, 255, 0.722);
+    border: 2px solid rgba(0, 76, 255, 0.722);
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+}
+
+.history_overlay{
+    position: fixed;
+    inset: 0;
+
+    /* display: none; */
+
+    justify-content: center;
+    align-items: center;
+
+    background: var(--history-backgorund);
+    backdrop-filter: blur(3px);
+    
+    z-index: 1000;
+}
+.history_popup{
+    margin-left: 100px;
+    padding: 10px;
+    width: 1000px;
+    max-width: 90vw;
+    height: 730px;
+    max-height: 80vh;
+    /* background-color: #1f1f1f;
+    border-radius: 15px; */
+    /* border: 2px solid red; */
+    overflow-y: auto;
+}
+.history_date_heading{
+    color: white;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding-bottom: 6px;
+}
+.history_task_card{
+    color: white;
+    padding: 12px 18px;
+    margin : 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    background: rgba(255,255,255,.03);
+    transition: .2s;
+}
+.history_task_card:hover{
+    background: rgba(255,255,255,.06);
+}
+.empty_history{
+    color:white;
+    text-align:center;
+    margin-top:120px;
+}
+.empty_history h2{
+    margin-bottom:15px;
+}
+.empty_history p{
+    opacity:.7;
+}
+.history_popup_header{
+    color: var(--inside-sections);
+    display: flex;
+    justify-content: space-between;
+}
+#close_button{
+    border: none;
+    width: 100px;
+    height: 40px;
+    background-color: rgba(226, 3, 3, 0.79);
+    border: 2px solid rgba(226, 3, 3, 0.79);
+    border-radius: 20px;
+    color: white;
+}
+.close_button:hover{
+    background-color: rgb(97, 0, 0);
+}
 
 
 
@@ -620,7 +712,6 @@ header {
     gap:4px;
 }
 .heatmap-cell{
-
     width:30px;
     height:30px;
     border:1px solid gray;

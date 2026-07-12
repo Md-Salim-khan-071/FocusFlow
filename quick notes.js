@@ -52,4 +52,4 @@ notesArea.addEventListener("input", saveNotes);
 
 
 // Load notes when the page opens
-loadNotes();
+// loadNotes();
