@@ -4,6 +4,13 @@ const LAST_OPEN_DATE_KEY = "FocusFlowLastOpenDate";
 const LAST_OPEN_WEEK_KEY = "FocusFlowLastOpenWeek";    
 
 const taskInput = document.getElementById("input_area");
+taskInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();   // Prevents form submission if inside a form
+        addTask();
+    }
+});  // to add if pressed enter 
+
 const addButton = document.getElementById("add_button");
 const taskCategory = document.getElementById("task_category");
 let taskList = document.querySelector(".active_tasks");   // querySelector uses css selectors hence . and # should be used for classes and ids
@@ -97,6 +104,11 @@ function renderTasks(){
         checkbox.checked = task.completed   // task is the object where completed : false . when the checkbox is not checked it stays false . if initially in the object if completed : true the checkbox appears ticked from the start 
         checkbox.addEventListener("click", () => {
             task.completed = checkbox.checked;
+            if (task.completed) {
+                task.completedDate = getFormattedTodayDate();
+            } else {
+                task.completedDate = null;
+            }
             saveTasks();
             renderTasks()   // calling the function after checkbox , so that striking out and everything happens 
             syncHeatmapWithTasks() // helper function tfor the heatmap and task integration
@@ -221,12 +233,52 @@ function dailyRollover(){  // task is to loop through every daily task . if it i
         if(task.category === "Daily"){  // this if block for checking if the task category is daily 
             if(task.completed === true){
                 task.archived = true;
-                task.completedDate = getFormattedTodayDate();
+                // task.completedDate = getFormattedTodayDate();
             }
         }
     }
     saveTasks();
 }
+function getCurrentWeekNumber(){
+    const today = new Date();
+    // First day of the year
+    const firstDay = new Date(today.getFullYear(), 0, 1);     // today.getFullYear = 2026 , 0 = january , 1 = 1 . becomes 1-1-2026 
+    // Days passed since Jan 1
+    const daysPassed = Math.floor((today - firstDay) / (1000 * 60 * 60 * 24));
+    // Week number
+    const weekNumber = Math.ceil((daysPassed + firstDay.getDay() + 1) / 7);
+    return weekNumber;
+}
+function checkForNewWeek(){
+    const currentWeek = getCurrentWeekNumber()
+    const lastOpenWeek = localStorage.getItem(LAST_OPEN_WEEK_KEY);
+    // First time opening the app
+    if(lastOpenWeek === null){
+        localStorage.setItem(LAST_OPEN_WEEK_KEY, currentWeek);
+        return;
+    }
+    // Same week
+    if(Number(lastOpenWeek) === currentWeek){   // why number(lastOpenWeek) bcoz localStorage saves it as "28" etc and "28" is not equal to 28
+        return;
+    }
+    // New week detected
+    console.log("New Week Detected");
+    weeklyRollover();
+    localStorage.setItem(LAST_OPEN_WEEK_KEY, currentWeek);
+}
+function weeklyRollover(){
+    for (const task of tasks){
+        if(task.category === "Weekly"){
+            if(task.completed){
+                task.archived = true;
+                // task.completedDate = getFormattedTodayDate();
+            }
+        }
+    }
+    saveTasks();
+    renderTasks();
+}
+
 
 function groupHistoryByDate(historyTasks){
     const groupedHistory = {};
@@ -250,7 +302,6 @@ function formatHistoryDate(dateString){
 }
 
 taskHistoryButton.addEventListener("click", () => {
-    console.log("History button clicked");
     historyOverlay.style.display = "flex";
     const historyTasks = tasks.filter(task => task.archived);
 
@@ -345,18 +396,19 @@ function lengthOfCategory(){
 }
 
 
-function syncHeatmapWithTasks() {  // this is helper function that gets the total and completed tasks for the heatmap . this function will be called everytime when something changes in the task section 
+function syncHeatmapWithTasks() {
     console.log("syncHeatmapWithTasks called");
-    const totalTasks = tasks.length;
-
-    const completedTasks =
-        tasks.filter(task => task.completed).length;
-
+    const today = getFormattedTodayDate();
+    const totalTasks = tasks.filter(task =>
+        !task.completed || task.completedDate === today
+    ).length;
+    const completedTasks = tasks.filter(task =>
+        task.completed && task.completedDate === today
+    ).length;
     updateTodayHeatmap({
         totalTasks,
         completedTasks
     });
-
 }
 
 function getFormattedTodayDate(){

@@ -354,7 +354,7 @@ header {
     position: fixed;
     inset: 0;
 
-    /* display: none; */
+    display: none;
 
     justify-content: center;
     align-items: center;
@@ -748,7 +748,7 @@ header {
 .heatmap_info{
     position: absolute;
     left: 1050px;
-    top: 1350px;
+    top: 1500px;
     display: none;
     padding: 10px;
     border-radius: 8px;
