@@ -9,6 +9,7 @@ let seconds = 0;
 let timer = null;
 
 let isRunning = false;
+let endtime = null;
 
 let sessioncount = 0;
 
@@ -46,15 +47,21 @@ function startTimer(){
     }
     isRunning = true; // this because initially at the top we have it set to false
 
+    endtime = Date.now() + ((FOCUS_MINUTES*60) + seconds)*1000;  // example : current time 22:00 , we start 30min timer , end time should be 22:30 . Date.now() stores in miliseconds so we convert 30mins into miliseconds . this is all done because if loop it keep decrementing after some  browser will stop after we change the tabs . but this approach if browser pauses the next time we open the tab , it will show the currect remaing time as we will calculating it and not  just decrementing .
+
+    console.log("End Time:", endtime);
+    console.log("Current Time:", Date.now());
+
     timer = setInterval(() => {
-        if (seconds > 0) {
-            seconds--;
-        }
-        else if(minutes > 0 && seconds == 0){
-            minutes--;
-            seconds=59;
-        }
-        else if(minutes == 0){
+        const remainingTime = Math.max(
+            0,
+            Math.floor((endtime - Date.now()) / 1000)  // converts miliseconds to seconds
+        );
+
+        minutes = Math.floor(remainingTime / 60);    // converts seconds to minutes by getting quotient
+        seconds = remainingTime % 60;   // this gets the remainder . so if seconds 622 . minutes become 10 and  seconds become 22.
+
+        if(remainingTime <= 0){
             clearInterval(timer);
             isRunning = false;
             
@@ -155,31 +162,6 @@ function loadPomodoro() {
 // loadPomodoro();
 document.getElementById("session_count").textContent =`${sessioncount} focus sessions completed today`;
 
-
-// focusButton.addEventListener("click",focusState)
-// function focusState(){
-//     clearInterval(timer);
-//     isRunning = false;
-
-//     currentState="focus"
-
-//     minutes = FOCUS_MINUTES;
-//     seconds = 0;
-
-//     updateDisplay()
-// }
-
-// breakButton.addEventListener("click",breakState)
-// function breakState(){
-//     clearInterval(timer);
-//     isRunning = false;   // because when user switches break . the timer should stop
-
-//     currentState="break"
-//     minutes = BREAK_MINUTES;
-//     seconds = 0;
-    
-//     updateDisplay()
-// }
 focusButton.addEventListener("click", () => {
     switchMode("focus", FOCUS_MINUTES);
     focusButton.classList.add("active_mode");
