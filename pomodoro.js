@@ -46,8 +46,12 @@ function startTimer(){
         return
     }
     isRunning = true; // this because initially at the top we have it set to false
-
-    endtime = Date.now() + ((FOCUS_MINUTES*60) + seconds)*1000;  // example : current time 22:00 , we start 30min timer , end time should be 22:30 . Date.now() stores in miliseconds so we convert 30mins into miliseconds . this is all done because if loop it keep decrementing after some  browser will stop after we change the tabs . but this approach if browser pauses the next time we open the tab , it will show the currect remaing time as we will calculating it and not  just decrementing .
+    if ( currentState == "focus") {
+        endtime = Date.now() + ((FOCUS_MINUTES*60) + seconds)*1000;  // example : current time 22:00 , we start 30min timer , end time should be 22:30 . Date.now() stores in miliseconds so we convert 30mins into miliseconds . this is all done because if loop it keep decrementing after some  browser will stop after we change the tabs . but this approach if browser pauses the next time we open the tab , it will show the currect remaing time as we will calculating it and not  just decrementing .
+    }
+    else{
+        endtime = Date.now() + ((BREAK_MINUTES*60) + seconds)*1000;
+    }
 
     console.log("End Time:", endtime);
     console.log("Current Time:", Date.now());
