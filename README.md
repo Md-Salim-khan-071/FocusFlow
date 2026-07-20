@@ -185,15 +185,18 @@ index.html
 
 ### Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+<img width="1742" height="894" alt="image" src="https://github.com/user-attachments/assets/5f8ab0d5-e0f2-47cd-80a2-fb2409fcb23e" />
+
+<img width="1753" height="865" alt="image" src="https://github.com/user-attachments/assets/6bc0c2bd-dbe2-43c6-9f44-7673bbd03276" />
 
 ### Heatmap
 
-![Heatmap](screenshots/heatmap.png)
+<img width="868" height="538" alt="image" src="https://github.com/user-attachments/assets/0271718f-68fa-44c0-aa25-b219c7b4f90b" />
+
 
 ### Task History
 
-![History](screenshots/history.png)
+<img width="1304" height="825" alt="image" src="https://github.com/user-attachments/assets/e4303687-4ab0-4349-b6b1-7c181b9f24cb" />
 
 ---
 
