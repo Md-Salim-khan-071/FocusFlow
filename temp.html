@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Personal Productivity Dashboard </title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<div class="fullbody">
+
+
+    <header>
+    <div class="greet_heading">
+        <h2 id="greeting"> Good Morning </h2>
+        <p> Here's what's on your plate today </p>
+    </div>
+
+    <div class="date_and_time">
+        <h2 id="live_clock">20:42:07</h2>
+        <!-- <p id="live_date">thu , jun 25</p> -->
+    </div>
+
+    <button id="light_dark_toggle">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" data-fg-d3bl343="0.8:1.41889:/src/app/App.tsx:1057:41:40655:18:e:Moon::::::D73T" data-fgid-d3bl343=":rb:"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg> -->
+        <span id="moon" class="sun_moon_icon">🌙</span>
+
+        <span id="sun" class="sun_moon_icon">☀️</span>
+    </button>
+    </header>
+
+
+    <div class="calender_weather_quote">
+
+        <div class="calender common_for_calender_weather_quote" >
+        <h3> 📅 Today </h3>
+        <br>
+        <h1 id="live_day"></h1> 
+        <h3 id="live_date"></h3>  
+        </div>
+
+        <div class="weather common_for_calender_weather_quote" >
+            <h3> ☔ Weather </h3>
+            <h1 id="temperature"> 20^C</h1>
+            <div class="weather_type_and_weather_icon">
+                <h4 id="weather"> partly cloudly </h4>
+                <h1 id="weather_symbol"> ⛅ </h1>
+            </div>
+            <!-- <h3 id="city"> Bengaluru </h3> -->
+            <div class="humidity_and_wind">
+                <h4 id="humidity"> Humidity</h4>
+                <h4 id="wind"> Wind </h4>
+            </div>
+        </div>
+
+        <div class="quote common_for_calender_weather_quote" >
+
+            <div class="quote_heading_and_refresh_box">
+            <h2> 💬 Daily Inspiration </h2> 
+            <button id="next_quote"> 🔄️ New Quote </button>
+            </div>
+            <br>
+            <h3 id="quote_text"> Loading quote ... </h3>
+            <p id="quote_author"> ..... </p>
+            
+            
+        </div>
+
+    </div>
+
+    <div class="tasks_section">
+
+        <div class="task_section_heading"> 
+            <h2> ✓ Tasks </h2>
+            <h3 id="completed_at_header"> 1/3 Tasks Completed </h3>
+        </div>
+
+`       <div class="toggle_buttons_section">
+            
+            <button id="daily_tab" class="common_for_task_section_buttons"> 
+                <p>⟳ Daily</p>
+                <p id="length_of_daily_task"></p>    
+            </button>
+            <button id="weekly_tab" class="common_for_task_section_buttons">
+                <p class="daily_and_milestone_heading">🗒 weekly</p>
+                <p id="length_of_weekly_task"></p>   
+            </button>
+            <button id="milestones_tab" class="common_for_task_section_buttons"> 
+                <p class="daily_and_milestone_heading">🎯 Milestones</p>
+                <p id="length_of_milestone_task"></p>     
+            </button>
+
+        </div>
+
+        <div id="subtitle"> 𖣠 Small Actions For Today </div>
+
+        <div class="add_tasks_full_section">
+            
+            <div class="dropdown">
+                <select id="task_category" class="common_in_add_section">
+
+                    <option value="Daily">Daily</option>
+
+                    <option value="Weekly">Weekly</option>
+
+                    <option value="Milestones">Milestones</option>
+
+                </select>
+            </div>
+
+            <div class="task_writtiing_area">
+                <!-- <p id="input_area" class="common_in_add_section"> ADD your texts here </p> -->
+                <input type="text" id="input_area" class="common_in_add_section input_area" placeholder="e.g. Review pull requests...">
+            </div>
+
+            <div class="add_button">
+                <button id="add_button" class="common_in_add_section"> ADD </button>
+            </div>
+            
+        </div>
+
+        <div class="active_tasks">
+            
+        </div>
+
+        <div class="completed">
+            <p class="completed_heading"> Completed </p>
+        </div>
+        <div class="completed_tasks">
+                
+        </div>
+
+        <div class="task_history_button_box"> 
+            <button id="task_history_button"> View Task History </button>
+        </div>
+
+        <div class="history_overlay">
+            <div class="history_popup">
+
+                <div class="history_popup_header">
+                    <h2>Task History</h2>
+                    <button id="close_button" class="close_button"> X Close</button>
+                </div>
+                
+                <div class="history_content">
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="quicknotes_pomodoro">
+
+        <div class="quick_notes common_for_quick_and_pomodoro">
+
+            <div class="quick_notes_header">
+
+                <h3 class="quick_notes_heading"> 📋Quick Notes</h3>
+                <p id="last_saved"> last saved </p>
+                
+            </div>
+
+            <textarea id="quick_notes" placeholder="eg : should i buy a notes today"></textarea>
+        </div>
+
+        <div class="pomodoro common_for_quick_and_pomodoro">
+
+            <div class="pomodoro_header">
+                <h3 class="pomodoro_title"> ⏱️ Pomodoro </h3>
+                <p id="session_count">  sessions today </p>
+            </div>
+
+            <div class="focus_break_toggle">
+                <button id="focus_tab" class="common_for_FocusBreak"> Focus  </button>
+                <button id="break_tab" class="common_for_FocusBreak"> Break </button>
+            </div>
+
+            <div class="timer">
+                <h1 id="timer"> . </h1>
+            </div>
+            
+            <div class="start_and_refresh">
+                <button id="start_timer" class="common_for_start_and_pause"> Start </button>
+                <button id="pause_timer" class="common_for_start_and_pause"> Pause </button>
+                <button id="reset_timer"> <h1>🗘</h1> </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="progress_and_heatmap">
+        <div class="progress common_for_progress_and_heatmap">
+            <h3 class="progress_heading"> ↗ Progress </h3>
+
+            <div class="progress_circle_and_progress_report">
+
+                <div id="progress_circle" class="progress_circle"> <!-- this becomes the ring --> 
+    
+                    <div class="progress_circle_content">
+                        <h2 id="progress_percentage"> 22 %</h2>
+                        <h3> Completed</h3>
+                    </div>
+                    
+                </div>
+
+                <div class="progress_report">
+                    <h4 id="progress_report_subtitle"> Keep  the moment going </h4>
+
+                    <div class="done_remaining_total">
+                        
+                        <div class="done">
+                            <h2 id="tasks_done"> 2 </h2>
+                            <h3 class="common_for_done_remaining_total_subtitle"> Done </h3>
+                        </div>
+                        <hr>
+                        <div class="remaining">
+                            <h2 id="tasks_remaining"> 3</h2>
+                            <h3 class="common_for_done_remaining_total_subtitle"> Remaining </h3>
+                        </div>
+                        <hr>
+                        <div class="total">
+                            <h2 id="total_tasks"> 5</h2>
+                            <h3 class="common_for_done_remaining_total_subtitle"> Total </h3>
+                        </div>
+
+                    </div>
+
+                    <div class="daily_weekly_milestones_progress">
+
+                        <div class="daily_progress common_for_daily_weekly_milestone_progress">
+                            <h4> Daily </h4>
+                            <div class="progress_bar">
+                                <div id="daily_progress_fill" class="progress_fill daily_fill"></div>
+                            </div>
+                            <h4 id="daily_count"> 1/3 </h4>
+                        </div>
+                        <div class="weekly_progress common_for_daily_weekly_milestone_progress">
+                            <h4> Weekly </h4>
+                            <div class="progress_bar">
+                                <div id="weekly_progress_fill" class="progress_fill weekly_fill"></div>
+                            </div>
+                            <h4 id="weekly_count"> 1/3 </h4>
+                        </div>
+                        <div class="milestones_progress common_for_daily_weekly_milestone_progress">
+                            <h4> Milestones </h4>
+                            <div class="progress_bar">
+                                <div id="milestones_progress_fill" class="progress_fill milestone_fill"></div>
+                            </div>
+                            <h4 id="milestone_count"> 1/3 </h4>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="heatmap common_for_progress_and_heatmap">
+
+            <div class="heatmap_header_container">
+
+                <div class="heatmap_header">
+                    <h3> 🔥 Consistency Heatmap </h3>
+                    <h4> Being Consistent is the key to success  </h4>
+                </div>
+
+                <h3 id="streak"> 🔥3 Days  Streak </h3>
+                
+            </div>
+
+            <div class="main_heatmap">
+
+            </div>
+
+            <div class="about_heatmap">
+                <p>Less</p>
+
+                <div class="cell_block">
+                    <div class="level0 common_for_each_level_cell"></div>
+                    <div class="level1 common_for_each_level_cell"></div>
+                    <div class="level2 common_for_each_level_cell"></div>
+                    <div class="level3 common_for_each_level_cell"></div>
+                    <div class="level4 common_for_each_level_cell"></div>
+                </div>
+
+                <p> More </p> 
+
+                <button id="heatmap_info_button"> ⓘ Info </button>
+
+            </div>
+
+        </div>
+
+        <div class="heatmap-tooltip"></div>   
+         <!-- this is for the pop up that appears when  hovering on the cells  -->
+
+        <div class="heatmap_info"></div>
+
+    </div>
+
+
+
+
+</div>  <!-- fullbody div -->
+
+<script src="script.js"></script>
+<script src="tasks_section.js"></script>
+<script src="pomodoro.js"></script>
+<script src="quick notes.js"></script>
+<script src="progress.js"></script>
+<script src="heatmap.js"></script>
+
+<script src="main.js"></script> // this should be last
+</body>
+</html>
