@@ -5,7 +5,7 @@
     --card-bg: white;
     --inside-sections: rgb(245, 237, 190);
     --task-hover: rgb(249, 248, 248);
-    --history-backgorund:  rgba(0, 0, 0, 0.825);
+    --history-backgorund: rgba(0, 0, 0, 0.825);
     --button-color: rgba(4, 183, 156, 0.722);
 
     /* Text */
@@ -40,8 +40,8 @@ body.dark-mode {
     --card-bg: #1e293b;
     --inside-sections: #18202e;
     --task-hover: #132035e1;
-    --history-backgorund:  rgba(255, 254, 254, 0.441);
-    --button-color: #38bdf8; 
+    --history-backgorund: rgba(255, 254, 254, 0.441);
+    --button-color: #38bdf8;
     /* Text */
     --primary-text: #f0f1f3;
     --secondary-text: #94a3b8;
@@ -74,16 +74,16 @@ body.dark-mode {
     box-sizing: border-box;
 }
 
-body{
-background-color: var(--bg-color);
-color: var(--primary-text);
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-text);
 }
 
-.fullbody{
+.fullbody {
     width: 100%;
     max-width: 1400px;
-    margin:  0 auto;
-    padding: 20px ;
+    margin: 0 auto;
+    padding: 20px;
     /* background-color: red; */
 }
 
@@ -91,24 +91,24 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;  
+    width: 100%;
     margin-bottom: 30PX;
 }
 
-.greet_heading p{
+.greet_heading p {
     color: var(--secondary-text);
 }
 
-#live_clock{
+#live_clock {
     position: relative;
     left: 15px;
 }
 
-#sun{
-    display:none;
+#sun {
+    display: none;
 }
 
-.sun_moon_icon{
+.sun_moon_icon {
     font-size: 22px;
 }
 
@@ -125,10 +125,10 @@ header {
     border: none;
     border-radius: 50%;
 
-    cursor: pointer; 
+    cursor: pointer;
 
     /* Soft shadow */
-    box-shadow: var(--card-shadow); 
+    box-shadow: var(--card-shadow);
 
     transition: all 0.2s ease;
 }
@@ -138,14 +138,15 @@ header {
     box-shadow: var(--button-shadow)
 }
 
-.calender_weather_quote{
-  display: flex;
-  width: 100%;
-  /* padding: 20px; */
-  gap: 20px;
-  
+.calender_weather_quote {
+    display: flex;
+    width: 100%;
+    /* padding: 20px; */
+    gap: 20px;
+
 }
-.common_for_calender_weather_quote{
+
+.common_for_calender_weather_quote {
     border: var(--border-color);
     border-radius: 30px;
     padding: 20px;
@@ -159,60 +160,66 @@ header {
 }
 
 
-.weather{
+.weather {
     padding: 20px;
 }
-#temperature{
-    margin: 20px 0 5px 0 ;
+
+#temperature {
+    margin: 20px 0 5px 0;
 }
-.weather_type_and_weather_icon{
+
+.weather_type_and_weather_icon {
     display: flex;
     justify-content: space-between;
     color: var(--secondary-text);
 }
-#city{
+
+#city {
     position: relative;
     bottom: 15px;
     color: var(--secondary-text);
 }
-.humidity_and_wind{
+
+.humidity_and_wind {
     display: flex;
     gap: 25px;
     color: var(--secondary-text);
 }
 
-#quote_text{
+#quote_text {
     margin: 10px 0;
     height: 10vh;
     overflow-y: auto;
 }
-.quote_heading_and_refresh_box{
+
+.quote_heading_and_refresh_box {
     display: flex;
     justify-content: space-between;
 }
 
-#next_quote{
+#next_quote {
     padding: 4px;
     background-color: white;
-    box-shadow: var(--card-shadow); 
+    box-shadow: var(--card-shadow);
     border: solid 2px rgb(255, 255, 255);
     border-radius: 10px;
-    
+
 }
+
 #next_quote:hover {
     transform: translateY(-2px);
     box-shadow: var(--button-shadow)
 }
 
-#live_date{
+#live_date {
     color: var(--secondary-text);
-    padding: 14px 0 ;
-} 
+    padding: 14px 0;
+}
 
 
 
 /* task section styling begins */
-.tasks_section{
+.tasks_section {
     width: 100%;
     /* min-height: 70vh; */
     max-height: fit-content;
@@ -220,7 +227,7 @@ header {
     color: var(--primary-text);
     padding: 30px;
     align-items: center;
-    margin:0 auto ;
+    margin: 0 auto;
     margin-top: 30px;
     /* border and shadows */
     border: var(--border-color);
@@ -228,12 +235,14 @@ header {
     box-shadow: var(--card-shadow);
     transition: all 0.2s ease;
 }
-.task_section_heading{
+
+.task_section_heading {
     color: var(--secondary-text);
     display: flex;
     justify-content: space-between;
 }
-.toggle_buttons_section{
+
+.toggle_buttons_section {
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -242,7 +251,8 @@ header {
     border-radius: 35px;
     background-color: var(--inside-sections);
 }
-.common_for_task_section_buttons{
+
+.common_for_task_section_buttons {
     all: unset;
     /* border: 2px solid var(--card-bg); */
     border-radius: 20px;
@@ -254,69 +264,81 @@ header {
     cursor: pointer;
     display: flex;
     justify-content: center;
-    gap: 10px;   
+    gap: 10px;
 }
 
-.daily_and_milestone_heading{
+.daily_and_milestone_heading {
     position: relative;
     bottom: 4px;
 }
-.common_for_task_section_buttons:hover{
+
+.common_for_task_section_buttons:hover {
     background-color: var(--card-bg);
     cursor: pointer;
     transform: translateY(-2px);
 }
-.common_for_task_section_buttons:focus{
-    background-color: var(--card-bg); 
-    border: 2px solid var(--card-bg); 
+
+.common_for_task_section_buttons:focus {
+    background-color: var(--card-bg);
+    border: 2px solid var(--card-bg);
 }
-#subtitle{
-    margin: 20px 0; 
+
+#subtitle {
+    margin: 20px 0;
     color: var(--secondary-text);
 }
-.add_tasks_full_section{
+
+.add_tasks_full_section {
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
-.common_in_add_section{
+
+.common_in_add_section {
     background-color: var(--inside-sections);
     border: 2px solid var(--inside-sections);
     border-radius: 20px;
     padding: 10px 10px;
     color: var(--primary-text);
 }
-#task_category{
+
+#task_category {
     background-color: var(--button-color);
     border: 2px solid var(--button-color);
-    color:white;
+    color: white;
     max-width: 100%;
     width: 10vw;
     text-align: center;
 }
-#add_button{
+
+#add_button {
     background-color: var(--button-color);
     border: 2px solid var(--button-color);
     max-width: 100%;
     width: 10vw;
     color: white;
 }
-.input_area{
+
+.input_area {
     max-width: 100%;
     width: 63vw;
 }
-.input_area:focus{
-    outline: none; 
-    border-color: #6355d8; 
+
+.input_area:focus {
+    outline: none;
+    border-color: #6355d8;
     box-shadow: 0 0 0 4px rgba(99, 85, 216, 0.15);
 }
-.active_tasks{
+
+.active_tasks {
     margin: 20px 0 10px 0;
     /* min-height: 18vh; */
     max-height: fit-content;
     padding: 10px;
 }
-.task_box{    /* css class created in js */
+
+.task_box {
+    /* css class created in js */
     /* border: 2px solid blue; */
     border-radius: 20px;
     padding: 10px;
@@ -326,43 +348,52 @@ header {
     gap: 20px;
     font-size: larger;
 }
-.left_section_of_taskbox{
+
+.left_section_of_taskbox {
     display: flex;
     gap: 10px;
 }
-.task_box:hover{
+
+.task_box:hover {
     background-color: var(--task-hover);
 }
-.common_for_title_and_action_buttons{
+
+.common_for_title_and_action_buttons {
     display: flex;
     justify-content: space-between;
 }
-.common_for_edit-and-delete{
+
+.common_for_edit-and-delete {
     border: none;
     margin: 0 5px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease;
 }
-.task_box:hover .common_for_edit-and-delete{
+
+.task_box:hover .common_for_edit-and-delete {
     opacity: 1;
     visibility: visible;
 }
-.completed_heading{
+
+.completed_heading {
     text-align: center;
 }
-.completed-task{
+
+.completed-task {
     text-decoration: line-through;
     color: var(--secondary-text);
     opacity: 0.7;
 
 }
-.task_history_button_box{
+
+.task_history_button_box {
     display: flex;
     /* align-items: center; */
     justify-content: center;
 }
-#task_history_button{
+
+#task_history_button {
     border: none;
     margin: 40px 0 20px 0;
     width: 200px;
@@ -374,7 +405,7 @@ header {
     font-size: 15px;
 }
 
-.history_overlay{
+.history_overlay {
     position: fixed;
     inset: 0;
 
@@ -385,10 +416,11 @@ header {
 
     background: var(--history-backgorund);
     backdrop-filter: blur(3px);
-    
+
     z-index: 1000;
 }
-.history_popup{
+
+.history_popup {
     margin-left: 100px;
     padding: 10px;
     width: 1000px;
@@ -400,43 +432,51 @@ header {
     /* border: 2px solid red; */
     overflow-y: auto;
 }
-.history_date_heading{
+
+.history_date_heading {
     color: white;
     margin-top: 25px;
     margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,.15);
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
     padding-bottom: 6px;
 }
-.history_task_card{
+
+.history_task_card {
     color: white;
     padding: 12px 18px;
-    margin : 10px;
+    margin: 10px;
     box-sizing: border-box;
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 10px;
-    background: rgba(255,255,255,.03);
+    background: rgba(255, 255, 255, .03);
     transition: .2s;
 }
-.history_task_card:hover{
-    background: rgba(255,255,255,.06);
+
+.history_task_card:hover {
+    background: rgba(255, 255, 255, .06);
 }
-.empty_history{
-    color:white;
-    text-align:center;
-    margin-top:120px;
+
+.empty_history {
+    color: white;
+    text-align: center;
+    margin-top: 120px;
 }
-.empty_history h2{
-    margin-bottom:15px;
+
+.empty_history h2 {
+    margin-bottom: 15px;
 }
-.empty_history p{
-    opacity:.7;
+
+.empty_history p {
+    opacity: .7;
 }
-.history_popup_header{
+
+.history_popup_header {
     color: var(--inside-sections);
     display: flex;
     justify-content: space-between;
 }
-#close_button{
+
+#close_button {
     border: none;
     width: 100px;
     height: 40px;
@@ -445,7 +485,8 @@ header {
     border-radius: 20px;
     color: white;
 }
-.close_button:hover{
+
+.close_button:hover {
     background-color: rgb(97, 0, 0);
 }
 
@@ -455,23 +496,26 @@ header {
 
 
 
-.quicknotes_pomodoro{
+.quicknotes_pomodoro {
     gap: 20px;
     display: flex;
     margin: 30px 0;
 }
 
-.quick_notes{
+.quick_notes {
     width: 708px;
 }
-.quick_notes_header{
+
+.quick_notes_header {
     display: flex;
     justify-content: space-between;
 }
-.quick_notes_heading{
+
+.quick_notes_heading {
     color: var(--secondary-text);
 }
-#quick_notes{
+
+#quick_notes {
     all: unset;
     margin: 10px 0;
     border: 2px solid var(--inside-sections);
@@ -483,7 +527,7 @@ header {
 }
 
 
-.common_for_quick_and_pomodoro{
+.common_for_quick_and_pomodoro {
     border: 2px solid white;
     background-color: var(--card-bg);
     color: var(--primary-text);
@@ -495,16 +539,18 @@ header {
     transition: all 0.2s ease;
 }
 
-.pomodoro{
-    min-width:  600px;
+.pomodoro {
+    min-width: 600px;
 }
-.pomodoro_header{
+
+.pomodoro_header {
     display: flex;
     width: 100%;
     justify-content: space-between;
     color: var(--secondary-text);
 }
-.focus_break_toggle{
+
+.focus_break_toggle {
     border: 2px solid var(--inside-sections);
     background-color: var(--inside-sections);
     border-radius: 30px;
@@ -513,7 +559,8 @@ header {
     display: flex;
     justify-content: center;
 }
-.common_for_FocusBreak{
+
+.common_for_FocusBreak {
     all: unset;
     min-width: 184px;
     border: 2px solid var(--inside-sections);
@@ -523,31 +570,38 @@ header {
     margin: 0 4.5px;
     text-align: center;
 }
-.common_for_FocusBreak:hover{
+
+.common_for_FocusBreak:hover {
     background-color: var(--card-bg);
     cursor: pointer;
     transform: translateY(-2px);
 }
-.active_mode{
+
+.active_mode {
     background-color: var(--card-bg);
     color: var(--primary-text);
-}  /* this class will be added with JS and will say which tab is active */
-.timer{
+}
+
+/* this class will be added with JS and will say which tab is active */
+.timer {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
-#timer{
+
+#timer {
     border: 5px solid var(--inside-sections);
     border-radius: 50%;
     padding: 40px 30px;
-}   
-.start_and_refresh{
+}
+
+.start_and_refresh {
     display: flex;
-    gap:20px;
+    gap: 20px;
     /* justify-content: center; */
 }
-.common_for_start_and_pause{
+
+.common_for_start_and_pause {
     all: unset;
     text-align: center;
     width: 220px;
@@ -555,20 +609,23 @@ header {
     border-radius: 30px;
     background-color: var(--button-color);
     color: white;
-    padding: 15px ;
+    padding: 15px;
 }
-.common_for_start_and_pause:hover{
+
+.common_for_start_and_pause:hover {
     cursor: pointer;
     transform: translateY(-2px);
 }
-#reset_timer{
-    all:unset;
+
+#reset_timer {
+    all: unset;
     /* border: 2px solid red; */
     width: 50px;
     text-align: center;
-    font-size: 50 ;
+    font-size: 50;
 }
-#reset_timer:hover{
+
+#reset_timer:hover {
     cursor: pointer;
     transform: translateY(-2px);
 }
@@ -578,11 +635,12 @@ header {
 } */
 
 
-.progress_and_heatmap{
+.progress_and_heatmap {
     display: flex;
     gap: 20px;
 }
-.common_for_progress_and_heatmap{
+
+.common_for_progress_and_heatmap {
     border: 2px solid white;
     background-color: var(--card-bg);
     color: var(--primary-text);
@@ -595,10 +653,12 @@ header {
     transition: all 0.2s ease;
     margin: 30px 0;
 }
-.progress_heading{
+
+.progress_heading {
     color: var(--secondary-text);
 }
-.progress_circle_and_progress_report{
+
+.progress_circle_and_progress_report {
     margin: 20px 0;
     display: flex;
     /* border: 2px solid red; */
@@ -606,73 +666,83 @@ header {
 
 /* to create the progress ring we will use conic-gradient which fills an area circular way from the centre . and inside we will use background color . so that background color will erase inner area of conic-gradient getting us a ring */
 
-.progress_circle{
-    width:180px;
-    height:180px;
+.progress_circle {
+    width: 180px;
+    height: 180px;
 
-    border-radius:50%;
+    border-radius: 50%;
     margin: 60px 0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background:
         conic-gradient(
             /* #4CAF50 0deg, */
             #4CAF50 80deg,
-            var(--inside-sections) 80deg,   /* this line is so that the remaining part remaing in the incomplete ring color*/
+            var(--inside-sections) 80deg,
+            /* this line is so that the remaining part remaing in the incomplete ring color*/
             /* for full degree becomes 0->360*/
         );
 }
-.progress_circle_content{
 
-    width:140px;
-    height:140px;
+.progress_circle_content {
 
-    border-radius:50%;
+    width: 140px;
+    height: 140px;
 
-    background:var(--card-bg);
+    border-radius: 50%;
 
-    display:flex;
-    flex-direction:column;
+    background: var(--card-bg);
 
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
 }
 
-#progress_percentage{
+#progress_percentage {
     text-align: center;
 }
-.progress_report{
+
+.progress_report {
     /* border: 2px solid blue; */
     margin: 20px 10px;
     width: 450px;
     padding: 10px;
 }
-#progress_report_subtitle{
+
+#progress_report_subtitle {
     color: var(--secondary-text);
 }
-.done_remaining_total{
+
+.done_remaining_total {
     margin: 10px 10px;
     display: flex;
     gap: 35px;
 }
-.done_remaining_total  h2{
+
+.done_remaining_total h2 {
     text-align: center;
 }
-.common_for_done_remaining_total_subtitle{
+
+.common_for_done_remaining_total_subtitle {
     color: var(--secondary-text);
 
 }
-.daily_weekly_milestones_progress{
+
+.daily_weekly_milestones_progress {
     margin: 20px 0;
 }
-.common_for_daily_weekly_milestone_progress{
+
+.common_for_daily_weekly_milestone_progress {
     display: flex;
     gap: 20px;
     margin: 20px 0;
 }
-.progress_bar{
+
+.progress_bar {
     width: 100%;
     height: 8px;
     background-color: var(--inside-sections);
@@ -681,43 +751,47 @@ header {
     margin-top: 7px;
 }
 
-.progress_fill{
+.progress_fill {
     width: 0%;
     height: 100%;
-    background-color: #4CAF50;   /* Change later to your theme color */
+    background-color: #4CAF50;
+    /* Change later to your theme color */
     border-radius: 20px;
     transition: width 0.3s ease;
 }
 
-.daily_fill{
+.daily_fill {
     background-color: #4CAF50;
 }
 
-.weekly_fill{
+.weekly_fill {
     background-color: #2196F3;
 }
 
-.milestone_fill{
+.milestone_fill {
     background-color: #9C27B0;
 }
 
 
 /* heatmap styles begin */
-.heatmap_header_container{
+.heatmap_header_container {
     display: flex;
     justify-content: space-between;
 }
-.heatmap_header_container h3{
+
+.heatmap_header_container h3 {
     color: var(--primary-text);
 }
-.heatmap_header h3{
+
+.heatmap_header h3 {
     color: var(--primary-text);
 }
-.heatmap_header h4{
+
+.heatmap_header h4 {
     color: var(--secondary-text);
 }
 
-.main_heatmap{
+.main_heatmap {
     margin: 10px 0;
     background-color: var(--inside-sections);
     border: 2px solid var(--inside-sections);
@@ -725,26 +799,30 @@ header {
     height: 200px;
     width: 600px;
     padding: 10px;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
-.month-block h4{
+
+.month-block h4 {
     margin: 10px 0;
 }
-.month-grid{
-    display:grid;
-    grid-template-columns:repeat(16,1fr);
-    gap:4px;
+
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 4px;
 }
-.heatmap-cell{
-    width:30px;
-    height:30px;
-    border:1px solid gray;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
+
+.heatmap-cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
 }
-.heatmap-tooltip{
+
+.heatmap-tooltip {
     position: absolute;
     left: 700px;
     display: none;
@@ -757,19 +835,21 @@ header {
     pointer-events: none;
     z-index: 1000;
 }
-#heatmap_info_button{
+
+#heatmap_info_button {
     border: none;
     margin-left: 250px;
     border: 2px solid var(--button-color);
     border-radius: 20px;
     text-align: center;
-    font-size:16px;
+    font-size: 16px;
     width: 120px;
     height: 40px;
     background-color: var(--button-color);
     color: white;
 }
-.heatmap_info{
+
+.heatmap_info {
     position: absolute;
     left: 1050px;
     top: 1500px;
@@ -785,35 +865,661 @@ header {
 }
 
 
-.about_heatmap{
+.about_heatmap {
     display: flex;
     gap: 20px;
     margin: 30px 0;
 }
-.about_heatmap p{
+
+.about_heatmap p {
     color: var(--secondary-text);
 }
-.common_for_each_level_cell{
+
+.common_for_each_level_cell {
     width: 15px;
     height: 15px;
 }
-.cell_block{
+
+.cell_block {
     display: flex;
     gap: 5px;
     /* margin: 5px 0; */
 }
-.level0{
+
+.level0 {
     background-color: var(--level-0);
 }
-.level1{
+
+.level1 {
     background-color: var(--level-1);
 }
-.level2{
+
+.level2 {
     background-color: var(--level-2);
 }
-.level3{
+
+.level3 {
     background-color: var(--level-3);
 }
-.level4{
+
+.level4 {
     background-color: var(--level-4);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN - FOCUSFLOW
+   Add this at the END of Style.css
+   ========================================================= */
+
+/* ---------- General ---------- */
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.fullbody {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .fullbody {
+        padding: 16px;
+    }
+
+    /* Header */
+    header {
+        margin-bottom: 20px;
+    }
+
+    /* Weather / Calendar / Quote */
+    .calender_weather_quote {
+        flex-wrap: wrap;
+    }
+
+    .common_for_calender_weather_quote {
+        width: calc(50% - 10px);
+        height: auto;
+        min-height: 220px;
+    }
+
+    .quote {
+        width: 100%;
+    }
+
+
+    /* ---------- Tasks ---------- */
+
+    .tasks_section {
+        padding: 20px;
+    }
+
+    .add_tasks_full_section {
+        flex-wrap: wrap;
+    }
+
+    #task_category {
+        width: 150px;
+    }
+
+    .input_area {
+        flex: 1;
+        width: auto;
+        min-width: 200px;
+    }
+
+    #add_button {
+        width: 120px;
+    }
+
+
+    /* ---------- Quick Notes + Pomodoro ---------- */
+
+    .quicknotes_pomodoro {
+        flex-direction: column;
+    }
+
+    .quick_notes,
+    .pomodoro {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .common_for_quick_and_pomodoro {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+
+    #quick_notes {
+        width: 100%;
+        height: 300px;
+    }
+
+
+    /* ---------- Progress + Heatmap ---------- */
+
+    .progress_and_heatmap {
+        flex-direction: column;
+    }
+
+    .common_for_progress_and_heatmap {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+
+    .main_heatmap {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .heatmap-tooltip {
+        display: none !important;
+    }
+
+    .heatmap_info {
+        position: static;
+        width: 100%;
+    }
+
+    #heatmap_info_button {
+        margin-left: 0;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* ---------- General ---------- */
+
+    .fullbody {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------- Header ---------- */
+
+    header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .greet_heading {
+        min-width: 0;
+    }
+
+    .greet_heading h2 {
+        font-size: 1.25rem;
+    }
+
+    .greet_heading p {
+        font-size: 0.85rem;
+    }
+
+    #live_clock {
+        left: 0;
+        font-size: 1rem;
+    }
+
+    #light_dark_toggle {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+
+    /* =====================================================
+       CALENDAR / WEATHER / QUOTE
+       ===================================================== */
+
+    .calender_weather_quote {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .common_for_calender_weather_quote {
+        width: 100%;
+        min-height: 0;
+        height: auto;
+        padding: 18px;
+        border-radius: 22px;
+    }
+
+    .calender {
+        min-height: 150px;
+    }
+
+    .weather {
+        min-height: 180px;
+    }
+
+    .quote {
+        min-height: 180px;
+    }
+
+    #temperature {
+        margin: 12px 0 5px;
+        font-size: 1.8rem;
+    }
+
+    #quote_text {
+        height: auto;
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .humidity_and_wind {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+
+    /* =====================================================
+       TASK SECTION
+       ===================================================== */
+
+    .tasks_section {
+        margin-top: 15px;
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    .task_section_heading {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .task_section_heading h3 {
+        font-size: 1rem;
+    }
+
+    #completed_at_header {
+        text-align: right;
+        white-space: nowrap;
+    }
+
+
+    /* Task tabs */
+
+    .toggle_buttons_section {
+        gap: 4px;
+        padding: 4px;
+        border-radius: 20px;
+    }
+
+    .common_for_task_section_buttons {
+        padding: 8px 4px;
+        max-width: none;
+        font-size: 0.85rem;
+        gap: 4px;
+    }
+
+
+    /* Task input */
+
+    .add_tasks_full_section {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .dropdown,
+    .task_writtiing_area,
+    .add_button {
+        width: 100%;
+    }
+
+    #task_category,
+    .input_area,
+    #add_button {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .common_in_add_section {
+        width: 100%;
+        padding: 12px;
+    }
+
+    #add_button {
+        height: 45px;
+    }
+
+
+    /* Task cards */
+
+    .task_box {
+        padding: 10px 5px;
+        gap: 8px;
+        font-size: 0.95rem;
+        align-items: flex-start;
+    }
+
+    .left_section_of_taskbox {
+        gap: 8px;
+        min-width: 0;
+        flex: 1;
+    }
+
+    .common_for_title_and_action_buttons {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .common_for_title_and_action_buttons span,
+    .common_for_title_and_action_buttons p {
+        overflow-wrap: anywhere;
+    }
+
+    /* On mobile, don't rely on hover to show buttons */
+    .common_for_edit-and-delete {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .task_history_button_box {
+        width: 100%;
+    }
+
+    #task_history_button {
+        width: 100%;
+        max-width: 250px;
+    }
+
+
+    /* =====================================================
+       HISTORY POPUP
+       ===================================================== */
+
+    .history_popup {
+        margin-left: 0;
+        width: 95vw;
+        max-width: 95vw;
+        height: 85vh;
+        max-height: 85vh;
+        padding: 15px;
+    }
+
+    .history_popup_header {
+        align-items: center;
+        gap: 10px;
+    }
+
+    #close_button {
+        width: 80px;
+        height: 36px;
+    }
+
+
+    /* =====================================================
+       QUICK NOTES
+       ===================================================== */
+
+    .quicknotes_pomodoro {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+    }
+
+    .quick_notes {
+        width: 100%;
+    }
+
+    .common_for_quick_and_pomodoro {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 0;
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    #quick_notes {
+        width: 100%;
+        height: 250px;
+        margin: 10px 0;
+        border-radius: 20px;
+    }
+
+
+    /* =====================================================
+       POMODORO
+       ===================================================== */
+
+    .pomodoro {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .pomodoro_header {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .focus_break_toggle {
+        padding: 6px;
+        width: 100%;
+    }
+
+    .common_for_FocusBreak {
+        min-width: 0;
+        width: 50%;
+        margin: 0 2px;
+        padding: 10px 5px;
+    }
+
+    #timer {
+        padding: 30px 22px;
+        font-size: 2rem;
+    }
+
+    .start_and_refresh {
+        width: 100%;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .common_for_start_and_pause {
+        width: 100%;
+        padding: 12px 8px;
+    }
+
+    #reset_timer {
+        width: 45px;
+        flex-shrink: 0;
+    }
+
+
+    /* =====================================================
+       PROGRESS
+       ===================================================== */
+
+    .progress_and_heatmap {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .common_for_progress_and_heatmap {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        margin: 15px 0;
+        padding: 16px;
+        border-radius: 22px;
+    }
+
+    .progress_circle_and_progress_report {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .progress_circle {
+        width: 150px;
+        height: 150px;
+        margin: 25px 0;
+    }
+
+    .progress_circle_content {
+        width: 115px;
+        height: 115px;
+    }
+
+    .progress_report {
+        width: 100%;
+        margin: 10px 0;
+        padding: 5px;
+    }
+
+    .done_remaining_total {
+        justify-content: space-between;
+        gap: 8px;
+        margin: 10px 0;
+    }
+
+    .done_remaining_total h2 {
+        font-size: 1.2rem;
+    }
+
+    .done_remaining_total h3 {
+        font-size: 0.75rem;
+    }
+
+    .common_for_daily_weekly_milestone_progress {
+        gap: 8px;
+        margin: 15px 0;
+        align-items: center;
+    }
+
+    .common_for_daily_weekly_milestone_progress h4 {
+        white-space: nowrap;
+        font-size: 0.8rem;
+    }
+
+
+    /* =====================================================
+       HEATMAP
+       ===================================================== */
+
+    .heatmap_header_container {
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .main_heatmap {
+        width: 100%;
+        height: 200px;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    .month-grid {
+        grid-template-columns: repeat(16, 25px);
+        gap: 3px;
+        min-width: 445px;
+    }
+
+    .heatmap-cell {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+    }
+
+    .about_heatmap {
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 0;
+    }
+
+    #heatmap_info_button {
+        margin-left: 0;
+        width: 100px;
+    }
+
+    .heatmap_info {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .fullbody {
+        padding: 8px;
+    }
+
+    .tasks_section,
+    .common_for_quick_and_pomodoro,
+    .common_for_progress_and_heatmap,
+    .common_for_calender_weather_quote {
+        padding: 12px;
+    }
+
+    .common_for_task_section_buttons {
+        font-size: 0.75rem;
+    }
+
+    .task_box {
+        font-size: 0.85rem;
+    }
+
+    #timer {
+        font-size: 1.6rem;
+        padding: 25px 18px;
+    }
+
+    .progress_circle {
+        width: 130px;
+        height: 130px;
+    }
+
+    .progress_circle_content {
+        width: 100px;
+        height: 100px;
+    }
+
 }
