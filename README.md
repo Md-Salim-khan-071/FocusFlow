@@ -1,228 +1,105 @@
 # 🚀 FocusFlow
 
-> **A modern Personal Productivity Dashboard** built with **HTML, CSS, and JavaScript** to help you stay focused, manage tasks, track productivity, and build consistent habits.
+> **A full-stack personal productivity dashboard designed to help users manage tasks, track focus sessions, monitor productivity, and build consistent habits.**
 
-<!-- ![Status](https://img.shields.io/badge/Status-Active-success)
-![Made With](https://img.shields.io/badge/Made%20With-JavaScript-yellow)
-![License](https://img.shields.io/badge/License-MIT-blue)
+FocusFlow started as a browser-based productivity dashboard using HTML, CSS, and JavaScript with Local Storage. It is now being evolved into a **cloud-backed productivity platform** using FastAPI, PostgreSQL, and modern deployment infrastructure.
 
---- -->
+---
+
+## 🌐 Live Application
+
+**Frontend:**  
+`https://focus-flow-liart-gamma.vercel.app/`
+
+**Backend API:**  
+`https://focusflow-doix.onrender.com`
+
+---
 
 ## ✨ Features
 
 ### 📋 Smart Task Manager
-- ✅ Create, edit, and delete tasks
-- 📅 Daily Tasks
-- 📆 Weekly Tasks
-- 🎯 Milestone Tasks
-- 🔄 Automatic Daily & Weekly Rollovers
-- 📚 Task History Archive
-- ✔️ Keyboard shortcut (Press **Enter** to add tasks)
 
----
+- ✅ Create, edit, and delete tasks
+- 📅 Daily tasks
+- 📆 Weekly tasks
+- 🎯 Milestone tasks
+- 🔄 Automatic daily and weekly rollovers
+- 📚 Task history and archive
+- ✔️ Keyboard shortcut support
+- ☁️ Cloud-backed task storage
+- 🔄 Tasks persist across browser sessions and devices
 
 ### 🍅 Pomodoro Timer
-- ⏱️ Focus & Break sessions
+
+- ⏱️ Focus and break sessions
 - ▶️ Start / Pause / Reset
 - 🔔 Audio notifications
 - 📊 Session counter
-- ⚡ Accurate timer using **End-Time Architecture**
-- 🖥️ Works correctly even when the browser tab is inactive
+- ⚡ End-Time based timer architecture
+- 🖥️ Accurate timing when the browser tab is inactive
 
----
+> Pomodoro data is currently stored locally. Cloud synchronization is planned.
 
 ### 🔥 Productivity Heatmap
-- GitHub-style heatmap
-- 📈 Daily productivity score
-- 📝 Tracks completed tasks
-- 🍅 Tracks Pomodoro sessions
+
+- 📊 GitHub-style productivity heatmap
+- 📈 Daily productivity scoring
+- 📝 Completed task tracking
+- 🍅 Pomodoro session tracking
 - 🔥 Daily streak calculation
 - 💬 Interactive tooltips
-- 📅 Automatically generates future months
+- 📅 Automatic future-month generation
 
----
+> Heatmap data is currently browser-based and will be migrated to the backend.
 
 ### 📊 Progress Dashboard
-- Circular progress indicator
+
+- Circular productivity indicator
+- Completed vs remaining tasks
 - Task completion statistics
-- Remaining vs Completed tasks
+- Daily / weekly / milestone progress
 - Overall productivity overview
 
----
-
 ### 📝 Quick Notes
-- Auto-save notes
-- Persistent local storage
-- Last saved timestamp
 
----
+- 📝 Quick note-taking
+- 💾 Automatic saving
+- 🕒 Last-saved timestamp
+
+> Notes currently use browser Local Storage.
 
 ### 🌤️ Dashboard Widgets
-- 🕒 Live Clock
-- 📅 Current Date
-- 👋 Dynamic Greeting
-- 🌦️ Weather Information
-- 💡 Motivational Quotes
-- 🌙 Theme Toggle
+
+- 🕒 Live clock
+- 📅 Current date
+- 👋 Dynamic greeting
+- 🌦️ Weather information
+- 💡 Motivational quotes
+- 🌙 Light / dark theme
+- 📱 Responsive layout
 
 ---
 
-## 🛠️ Tech Stack
+# 🏗️ Architecture
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Local Storage API
+FocusFlow is gradually evolving from a client-side application into a full-stack cloud application.
 
----
-
-## 📂 Project Structure
-
-```
-FocusFlow/
-│
-├── index.html
-├── style.css
-├── script.js
-├── tasks_section.js
-├── pomodoro.js
-├── progress.js
-├── heatmap.js
-├── quick_notes.js
-└── assets/
-```
-
----
-
-## 🧠 How It Works
-
-### Daily Task Lifecycle
-
-```
-Create Task
-      │
-      ▼
-Complete Task
-      │
-      ▼
-Daily Rollover
-      │
-      ├── Completed → History
-      └── Incomplete → Next Day
-```
-
----
-
-### Weekly Task Lifecycle
-
-```
-Create Weekly Task
-        │
-        ▼
-Complete During Week
-        │
-        ▼
-Visible Until Week Ends
-        │
-        ▼
-Archived Automatically
-```
-
----
-
-### Heatmap Scoring
-
-Productivity is calculated using:
-
-- ✅ Completed Tasks (60%)
-- 🍅 Completed Pomodoro Sessions (40%)
-
-Final productivity score determines the heatmap color intensity.
-
----
-
-## 💾 Data Storage
-
-FocusFlow stores data locally using the browser's Local Storage.
-
-Stored information includes:
-
-- Tasks
-- Task History
-- Pomodoro State
-- Heatmap Data
-- Notes
-- Theme Preference
-- Progress Statistics
-
----
-
-## 🚀 Getting Started
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/FocusFlow.git
-```
-
-2. Open the project
-
-```bash
-cd FocusFlow
-```
-
-3. Launch using VS Code Live Server or simply open:
-
-```
-index.html
-```
-
----
-
-## 📸 Screenshots
-
-> *(Add screenshots here once the UI is finalized.)*
-
-### Dashboard
-
-<img width="1742" height="894" alt="image" src="https://github.com/user-attachments/assets/5f8ab0d5-e0f2-47cd-80a2-fb2409fcb23e" />
-
-<img width="1753" height="865" alt="image" src="https://github.com/user-attachments/assets/6bc0c2bd-dbe2-43c6-9f44-7673bbd03276" />
-
-### Heatmap
-
-<img width="868" height="538" alt="image" src="https://github.com/user-attachments/assets/0271718f-68fa-44c0-aa25-b219c7b4f90b" />
-
-
-### Task History
-
-<img width="1304" height="825" alt="image" src="https://github.com/user-attachments/assets/e4303687-4ab0-4349-b6b1-7c181b9f24cb" />
-
----
-
-## 🎯 Future Improvements
-
-- User Authentication
-- Cloud Sync
-- Export Reports (PDF / CSV)
-- Calendar Integration
-- Notifications & Reminders
-- Mobile Responsive Layout
-- Progressive Web App (PWA)
-- Electron Desktop Version
-
----
-
-## 🤝 Contributing
-
-Contributions, ideas, and feature requests are welcome!
-
-Feel free to fork the project and submit a pull request.
-
----
-
-## 👨‍💻 Author
-
-**Mohammed Salim Usman Khan**
-
-If you found this project useful, consider giving it a ⭐ on GitHub!
+```text
+                    FocusFlow
+                        │
+              ┌─────────┴─────────┐
+              │                   │
+         Frontend              Backend
+          Vercel                Render
+              │                   │
+              │ HTTPS             │
+              └─────────┬─────────┘
+                        │
+                     FastAPI
+                        │
+                   SQLAlchemy
+                        │
+                        ▼
+                PostgreSQL
+                  Supabase
